@@ -40,7 +40,7 @@
             <div class="widget worange">
               <!-- Widget head -->
               <div class="widget-head">
-                <i class="glyphicon glyphicon-lock"></i> Login 
+                <i class="glyphicon glyphicon-lock"></i> 登陆 
               </div>
 				<%
 					String error = (String) request.getAttribute(FormAuthenticationFilter.DEFAULT_ERROR_KEY_ATTRIBUTE_NAME);
@@ -75,14 +75,14 @@
 					<div class="col-lg-9 col-lg-offset-3">
                       <div class="checkbox">
                         <label>
-                          <input type="checkbox"  id="rememberMe" name="rememberMe"> Remember me
+                          <input type="checkbox"  id="rememberMe" name="rememberMe"> 记住我
                         </label>
 						</div>
 					</div>
 					</div>
                         <div class="col-lg-9 col-lg-offset-2">
-							<button type="submit" class="btn btn-danger">Sign in</button>
-							<button type="reset" class="btn btn-default">Reset</button>
+							<button type="submit" class="btn btn-danger">登陆</button>
+							<button type="reset" class="btn btn-default">重置</button>
 						</div>
                     <br />
                   </form>
@@ -91,7 +91,7 @@
                 </div>
               
                 <div class="widget-foot">
-                  Not Registred? <a href="${ctx}/register">Register here</a>
+                  还没有用户? <a href="${ctx}/register">注册一个吧</a>
                 </div>
             </div>  
       </div>

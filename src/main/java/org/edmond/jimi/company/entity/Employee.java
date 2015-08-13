@@ -15,7 +15,7 @@ public class Employee extends IdEntity {
 	private Long companyId;
 	private String name;
 	private String phone;
-	private String phoneIME;
+	private String phoneIMEI;
 
 	public String getName() {
 		return name;
@@ -33,12 +33,12 @@ public class Employee extends IdEntity {
 		this.phone = phone;
 	}
 
-	public String getPhoneIME() {
-		return phoneIME;
+	public String getPhoneIMEI() {
+		return phoneIMEI;
 	}
 
-	public void setPhoneIME(String phoneIME) {
-		this.phoneIME = phoneIME;
+	public void setPhoneIMEI(String phoneIMEI) {
+		this.phoneIMEI = phoneIMEI;
 	}
 
 	public Long getCompanyId() {

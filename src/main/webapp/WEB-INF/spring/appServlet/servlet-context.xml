@@ -13,7 +13,7 @@
 		infrastructure -->
 	
 	<!-- 自动扫描且只扫描@Controller -->
-	<context:component-scan base-package="org.edmond.mywebapp.*.web,org.edmond.mywebapp.*.api,org.edmond.weixin.web" use-default-filters="false">
+	<context:component-scan base-package="org.edmond.mywebapp.*.web,org.edmond.mywebapp.*.api,org.edmond.weixin.web,org.edmond.jimi.*.web,org.edmond.jimi.*.api," use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 		<context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
 	</context:component-scan>

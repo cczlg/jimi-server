@@ -5,6 +5,7 @@
 		<pattern>/api/*</pattern>
 		<pattern>/msg</pattern>
 		<pattern>/login</pattern>
+		<pattern>/register</pattern>
 	</excludes>
 	
 	<decorator name="default" page="mac/default.jsp">

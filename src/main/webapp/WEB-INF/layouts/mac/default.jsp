@@ -10,7 +10,7 @@
 <html lang="en">
 <head>
 <!-- Title and other stuffs -->
-<title>我的微信服务号 <sitemesh:title /></title>
+<title>几米订单 <sitemesh:title /></title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">

@@ -8,7 +8,7 @@
         <div class="col-md-4">
           <!-- Logo. -->
           <div class="logo">
-            <h1><a href="#">微信服务号<span class="bold"></span></a></h1>
+            <h1><a href="#">几米订单<span class="bold"></span></a></h1>
             <p class="meta">后台管理系统</p>
           </div>
           <!-- Logo ends -->
