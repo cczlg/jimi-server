@@ -16,6 +16,7 @@ public class Employee extends IdEntity {
 	private String name;
 	private String phone;
 	private String phoneIMEI;
+	private String status;
 
 	public String getName() {
 		return name;
@@ -47,5 +48,13 @@ public class Employee extends IdEntity {
 
 	public void setCompanyId(Long companyId) {
 		this.companyId = companyId;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 }

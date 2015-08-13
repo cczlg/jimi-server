@@ -58,3 +58,32 @@ insert into ss_role_permission (role_id,permission_id) values(1,1);
 insert into ss_role_permission (role_id,permission_id) values(1,2);
 insert into ss_role_permission (role_id,permission_id) values(1,3);
 insert into ss_role_permission (role_id,permission_id) values(1,4);
+
+##Jimi 
+CREATE TABLE `jimi`.`jimi_company` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NOT NULL,
+  `address` VARCHAR(255) NULL,
+  `linkMan` VARCHAR(45) NULL,
+  `linkPhone` VARCHAR(45) NULL,
+  `creator` VARCHAR(45) NULL,
+  `updater` VARCHAR(45) NULL,
+  `createDate` DATETIME NULL,
+  `updateDate` DATETIME NULL,
+  `status` VARCHAR(20) NULL ,
+  PRIMARY KEY (`id`));
+
+ CREATE TABLE `jimi`.`jimi_employee` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `companyId` BIGINT NOT NULL,
+  `name` VARCHAR(45) NULL,
+  `phone` VARCHAR(20) NOT NULL,
+  `phoneIMEI` VARCHAR(30) NULL,
+  `status` VARCHAR(20) NULL,
+  `creator` VARCHAR(45) NULL,
+  `updater` VARCHAR(45) NULL,
+  `createDate` DATETIME NULL,
+  `updateDate` DATETIME NULL,
+  PRIMARY KEY (`id`));
+
+ 

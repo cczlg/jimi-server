@@ -16,6 +16,8 @@ public class Company extends IdEntity{
 	private String address;
 	private String linkMan;
 	private String linkPhone;
+	private String status;
+	
 	public String getName() {
 		return name;
 	}
@@ -39,6 +41,12 @@ public class Company extends IdEntity{
 	}
 	public void setLinkPhone(String linkPhone) {
 		this.linkPhone = linkPhone;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 	
