@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="org.edmond.mywebapp.system.dao.UserDao">
+	<resultMap type="User" id="user_with_role">
+		<result column="id" property="id" />
+		<result column="login_name" property="loginName" />
+		<result column="name" property="name" />
+		<result column="password" property="password" />
+		<result column="salt" property="salt" />
+		<result column="email" property="email" />
+		<result column="status" property="status" />
+		<result column="register_date" property="registerDate" />
+		<collection property="roleList" javaType="Role">
+			<result column="id" property="id" />
+			<result column="name" property="name" />
+			<result column="description" property="description" />
+		</collection>
+	</resultMap>
+
+	<insert id="insert" parameterType="User">
+		insert into ss_user
+		(login_name,name,password,salt,email,status,register_date)
+		values(#{loginName},#{name},#{password},#{salt},#{email},#{status},#{registerDate})
+	</insert>
+	<!-- 获取用户: 输出直接映射到对象, login_name列要"as loginName"以方便映射 ,team_id as "team.id"创建team对象并赋值 -->
+	<select id="get" parameterType="int" resultType="User">
+		select id, name,
+		email,
+		login_name as loginName,status,register_date as registerDate
+		from ss_user
+		where id=#{id}
+	</select>
+
+	<!-- 查询用户,演示: 1.输入用map传入多个参数 2.<where>语句, 智能添加where和and关键字 3.输出直接映射对象 -->
+	<select id="search" parameterType="map" resultType="User">
+		select id, name, email,
+		login_name as loginName,salt,status,password,status,register_date as registerDate
+		from ss_user
+		<where>
+			<if test="loginName != null">
+				login_name=#{loginName}
+			</if>
+			<if test="name != null">
+				and name=#{name}
+			</if>
+		</where>
+	</select>
+
+	<!-- 插入用户： 1.由数据库生成id并赋值到user对象 2.输入用对象, 嵌套属性表达式#{team.id} -->
+	<insert id="save" parameterType="User" useGeneratedKeys="true"
+		keyProperty="id">
+		insert into ss_user (
+		login_name, name, password, email)
+		values (
+		#{loginName}, #{name}, #{password}, #{email})
+	</insert>
+
+	<!-- 删除用户 -->
+	<delete id="delete" parameterType="int">
+		delete from ss_user where
+		id=#{id};
+		delect from ss_user_role where user_id=#{id};
+	</delete>
+
+	<update id="update" parameterType="User">
+		update ss_user set name=#{name}
+		<if test="password!=null">
+			,password=#{password}
+		</if>
+		,email=#{email}
+		where id=#{id}
+	</update>
+
+	<select id="getAll" resultType="User">
+		select id, name, email,
+		login_name as loginName,status,register_date as registerDate
+		from ss_user
+	</select>
+
+	<select id="getUserWithRole" parameterType="String" resultMap="user_with_role">
+		select ss_user.* ,ss_role.* from ss_user,ss_role,ss_user_role
+		where
+		ss_user.id=ss_user_role.user_id and ss_role.id=ss_user_role.role_id
+		and ss_user.login_name=#{loginName}
+	</select>
+
+	<select id="getUserPermissions" parameterType="int" resultType="String">
+		select p.permission from ss_user_role ur,ss_permission
+		p,ss_role_permission rp
+		where ur.user_id=#{id}
+		and ur.role_id=rp.role_id
+		and rp.permission_id=p.id
+	</select>
+
+	<select id="getRoleByUserId" parameterType="int" resultType="String">
+		select r.name from ss_role r ,ss_user_role ur where ur.role_id=r.id
+		and ur.user_id=#{userId};
+	</select>
+
+	<select id="getRolesCheckStatus" parameterType="int" resultType="map">
+		select r.id ,r.name , case ifnull(ru.user_id,'unchecked')
+		when'unchecked' then '' else 'checked' end as stats
+		from ss_role r left
+		join ss_user_role ru on r.id=ru.role_id and ru.user_id=#{userId}
+		order
+		by r.id asc
+	</select>
+
+	<insert id="insertURBat" parameterType="user">
+			delete from ss_user_role  where user_id=#{id};
+		<if test="roles != null and roles.length != 0 ">
+			insert into ss_user_role  (user_id,role_id) values
+			<foreach  collection="roles" item="roleId" separator=","
+				close=";">
+				(#{id},#{roleId})
+			</foreach>
+		</if>
+	</insert>
+	
+</mapper> 

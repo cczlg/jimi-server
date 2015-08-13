@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="org.edmond.mywebapp.system.dao.RoleDao">
+	<resultMap type="Role" id="role_with_perm">
+		<result column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="description" property="description" />
+		<collection property="permissions" javaType="Permission">
+			<result column="id" property="id" />
+			<result column="permission" property="permission" />
+			<result column="description" property="description" />
+		</collection>
+	</resultMap>
+
+	<insert id="insert" parameterType="Role" useGeneratedKeys="true"
+		keyProperty="id">
+		insert into ss_role
+		(name,description)
+		values(#{name},#{description})
+	</insert>
+	<!-- 获取用户 -->
+	<select id="get" parameterType="int" resultType="Role">
+		select id, name,
+		description
+		from ss_role
+		where id=#{id}
+	</select>
+
+	<!-- 查询用户,演示: 1.输入用map传入多个参数 2.<where>语句, 智能添加where和and关键字 3.输出直接映射对象 -->
+	<select id="search" parameterType="map" resultType="Role">
+		select id, name, description
+		from ss_role
+		<where>
+			<if test="name != null">
+				name=#{name}
+			</if>
+		</where>
+	</select>
+
+	<!-- 删除 -->
+	<delete id="delete" parameterType="int">
+		delete from ss_role where
+		id=#{id};
+		delect from ss_user_role where user_id=#{id};
+		delete from
+		ss_role_permission where role_id=#{id};
+	</delete>
+
+	<update id="update" parameterType="Role">
+		update ss_role set
+		description=#{description}
+		where id=#{id}
+	</update>
+
+	<select id="getAll" resultType="Role">
+		select id, name, description
+		from
+		ss_role
+	</select>
+
+	<select id="getRoleWithPermission" parameterType="int"
+		resultMap="role_with_perm">
+		select ss_role.*,ss_permission.* from
+		ss_role,ss_permission,ss_role_permission
+		where ss_role.id =
+		ss_role_permission.role_id
+		and ss_permission.id=ss_role_permission.permission_id and
+		ss_role.id=#{id}
+	</select>
+
+	<select id="getPermissionsCheckStatus" parameterType="int"
+		resultType="map">
+		select p.id ,p.permission , case
+		ifnull(rp.role_id,'unchecked')
+		when'unchecked' then '' else 'checked'
+		end as stats
+		from ss_permission p left
+		join ss_role_permission rp on
+		p.id=rp.permission_id and rp.role_id=#{id}
+		order
+		by p.id asc
+	</select>
+	<insert id="insertRPBat" parameterType="role">
+		delete from ss_role_permission where role_id=#{id};
+		<if test="permissions != null and permissions.length != 0 ">
+			insert into ss_role_permission (role_id,permission_id) values
+			<foreach collection="permissions" item="permissionId"
+				separator="," close=";">
+				(#{id},#{permissionId})
+			</foreach>
+		</if>
+	</insert>
+</mapper> 

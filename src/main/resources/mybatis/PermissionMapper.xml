@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="org.edmond.mywebapp.system.dao.PermissionDao">
+	<insert id="insert" parameterType="Permission" useGeneratedKeys="true"
+		keyProperty="id">
+		insert into ss_permission
+		(permission,description)
+		values(#{permission},#{description})
+	</insert>
+	<!-- 获取用户-->
+	<select id="get" parameterType="int" resultType="Permission">
+		select id, 
+		permission,
+		description
+		from ss_permission
+		where id=#{id}
+	</select>
+
+	<!-- 查询用户,演示: 1.输入用map传入多个参数 2.<where>语句, 智能添加where和and关键字 3.输出直接映射对象 -->
+	<select id="search" parameterType="map" resultType="Permission">
+		select id,  permission,description
+		from ss_permission
+		<where>
+			<if test="permission != null">
+				permission=#{permission}
+			</if>
+		</where>
+	</select>
+
+	<!-- 删除 -->
+	<delete id="delete" parameterType="int">
+		delete from ss_permission where id=#{id};
+		delete from ss_role_permission  where role_id=#{id};
+	</delete>
+
+	<update id="update" parameterType="Permission">
+		update ss_permission set 
+		description=#{description}
+		where id=#{id}
+	</update>
+
+	<select id="getAll" resultType="Permission">
+		select id,  permission,description
+		from ss_permission
+	</select>
+	
+	
+</mapper> 
