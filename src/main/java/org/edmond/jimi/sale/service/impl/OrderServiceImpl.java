@@ -15,31 +15,26 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public List<Order> list() {
-		// TODO Auto-generated method stub
-		return null;
+		return orderDao.getAll();
 	}
 
 	@Override
 	public void update(Order entity) {
-		// TODO Auto-generated method stub
-		
+		orderDao.update(entity);
 	}
 
 	@Override
 	public Order get(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return orderDao.get(id);
 	}
 
 	@Override
 	public void delete(Long id) {
-		// TODO Auto-generated method stub
-		
+		orderDao.delete(id);
 	}
 
 	@Override
 	public void insert(Order entity) {
-		// TODO Auto-generated method stub
-		
+		orderDao.insert(entity);
 	}
 }

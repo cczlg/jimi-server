@@ -4,25 +4,14 @@
 
 <html>
 <head>
-	<title>角色管理</title>
+	<title>员工管理</title>
 	
 	<script>
 		$(document).ready(function() {
 			//聚焦第一个输入框
-			$("#loginName").focus();
+			$("#name").focus();
 			//为inputForm注册validate函数
-			$("#inputForm").validate({
-				rules: {
-					loginName: {
-						remote: "${ctx}/admin/role/checkName"
-					}
-				},
-				messages: {
-					loginName: {
-						remote: "角色名已存在"
-					}
-				}
-			});
+			$("#inputForm").validate();
 		});
 	</script>
 </head>
@@ -32,17 +21,17 @@
 	<div class="page-head">
 		<!-- Page heading -->
 		<h2 class="pull-left">
-			角色管理
+			员工管理
 			<!-- page meta -->
-			<span class="page-meta">Something Goes Here</span>
+			<span class="page-meta">Employee Management</span>
 		</h2>
 
 
 		<!-- Breadcrumb -->
 		<div class="bread-crumb pull-right">
-			<a href="${ctx}/"><i class="icon-home"></i> 首页</a>
+			<a href="${ctx}/"><i class="glyphicon glyphicon-home"></i> 首页</a>
 			<!-- Divider -->
-			<span class="divider">/</span> <a href="#" class="bread-current">角色管理</a>
+			<span class="divider">/</span> <a href="#" class="bread-current">员工管理</a>
 		</div>
 
 		<div class="clearfix"></div>
@@ -65,7 +54,7 @@
 					<div class="widget wgreen">
 
 						<div class="widget-head">
-							<div class="pull-left">角色信息</div>
+							<div class="pull-left">员工信息</div>
 							<div class="widget-icons pull-right">
 								<a href="#" class="wminimize"><i class="icon-chevron-up"></i></a>
 								<a href="#" class="wclose"><i class="icon-remove"></i></a>
@@ -77,21 +66,35 @@
 							<div class="padd">
 
 								<!-- Form starts.  -->
-								<form class="form-horizontal" role="form" id="inputForm" action="${ctx}/admin/role/" method="post" autocomplete="off">
-
+								<form class="form-horizontal" role="form" id="inputForm" action="${ctx}/jimi/employee/" method="post" autocomplete="off">
 									<div class="form-group">
-										<label class="col-lg-4 control-label" for="name">角色名</label>
+										<label class="col-lg-4 control-label" for="companyId">公司名称</label>
+										<div class="col-lg-8">
+											<input type="text" id="companyId" name="companyId"
+												class="form-control required" placeholder="公司名称">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-lg-4 control-label" for="name">员工姓名</label>
 										<div class="col-lg-8">
 											<input type="text" id="name" name="name"
-												class="form-control required" placeholder="角色名称">
+												class="form-control required" placeholder="员工姓名">
 										</div>
 									</div>
 									<div class="form-group">
 										<label for="name" class="col-lg-4 control-label"
-											for="loginName">描述</label>
+											for="phone">电话号码</label>
 										<div class="col-lg-8">
-											<input type="text" id="description" name="description"
-												class="form-control" placeholder="描述">
+											<input type="text" id="phone" name="phone"
+												class="form-control" placeholder="电话号码">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="name" class="col-lg-4 control-label"
+											for="phoneIMEI">手机序列号</label>
+										<div class="col-lg-8">
+											<input type="text" id="phoneIMEI" name="phoneIMEI"
+												class="form-control" placeholder="手机序列号">
 										</div>
 									</div>
 

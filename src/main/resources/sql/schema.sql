@@ -71,6 +71,7 @@ CREATE TABLE `jimi`.`jimi_company` (
   `createDate` DATETIME NULL,
   `updateDate` DATETIME NULL,
   `status` VARCHAR(20) NULL ,
+  `memo` VARCHAR(255) NULL
   PRIMARY KEY (`id`));
 
  CREATE TABLE `jimi`.`jimi_employee` (
@@ -86,4 +87,55 @@ CREATE TABLE `jimi`.`jimi_company` (
   `updateDate` DATETIME NULL,
   PRIMARY KEY (`id`));
 
- 
+ CREATE TABLE `jimi`.`jimi_customer` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `companyId` BIGINT NULL,
+  `employeeId` BIGINT NULL,
+  `name` VARCHAR(45) NOT NULL,
+  `phone` VARCHAR(45) NULL,
+  `address` VARCHAR(200) NULL,
+  `score` DOUBLE NULL,
+  `status` VARCHAR(20) NULL,
+  `creator` VARCHAR(45) NULL,
+  `updater` VARCHAR(45) NULL,
+  `createDate` DATETIME NULL,
+  `updateDate` DATETIME NULL,
+  PRIMARY KEY (`id`));
+
+  CREATE TABLE `jimi`.`jimi_order` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `companyId` BIGINT NULL,
+  `employeeId` BIGINT NULL,
+  `code` VARCHAR(45) NULL,
+  `orderTime` DATETIME NULL,
+  `customerId` BIGINT NULL,
+  `customer` VARCHAR(45) NULL,
+  `total` DOUBLE NULL,
+  `salesman` VARCHAR(45) NULL,
+  `address` VARCHAR(200) NULL,
+  `customerPhone` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`));
+
+  CREATE TABLE `jimi`.`jimi_order_item` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `orderCode` VARCHAR(45) NULL,
+  `customer` VARCHAR(45) NULL,
+  `productId` BIGINT NULL,
+  `product` VARCHAR(100) NULL,
+  `price` DOUBLE ZEROFILL NULL,
+  `profit` DOUBLE ZEROFILL NULL,
+  `quantity` INT ZEROFILL NULL,
+  `flag` INT NULL,
+  `image` VARCHAR(255) NULL,
+  PRIMARY KEY (`id`));
+
+  CREATE TABLE `jimi`.`jimi_product` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `companyId` BIGINT NULL,
+  `product` VARCHAR(45) NULL,
+  `purchasePrice` DOUBLE NULL,
+  `price` DOUBLE NULL,
+  `memo` VARCHAR(255) NULL,
+  `image` VARCHAR(255) NULL,
+  `status` VARCHAR(20) NULL
+  PRIMARY KEY (`id`));

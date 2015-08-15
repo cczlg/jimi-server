@@ -13,6 +13,7 @@ public class OrderItem extends IdEntity {
 	private static final long serialVersionUID = 8436773779205802350L;
 	private String orderCode;
 	private String customer;
+	private Long productId;
 	private String product;
 	private double price;
     private double profit;
@@ -67,5 +68,11 @@ public class OrderItem extends IdEntity {
 	}
 	public void setImage(String image) {
 		this.image = image;
+	}
+	public Long getProductId() {
+		return productId;
+	}
+	public void setProductId(Long productId) {
+		this.productId = productId;
 	}
 }

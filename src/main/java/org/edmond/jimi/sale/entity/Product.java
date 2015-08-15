@@ -10,13 +10,13 @@ public class Product extends IdEntity {
 	 * 
 	 */
 	private static final long serialVersionUID = 3387185599677184142L;
-	private Long employeeId;
 	private Long companyId;
 	private String product;
 	private double price;
+	private double purchasePrice;
 	private String memo;
 	private String image;
-    private double purchasePrice;
+    private String status;
     
 	public String getProduct() {
 		return product;
@@ -47,6 +47,18 @@ public class Product extends IdEntity {
 	}
 	public void setPurchasePrice(double purchasePrice) {
 		this.purchasePrice = purchasePrice;
+	}
+	public Long getCompanyId() {
+		return companyId;
+	}
+	public void setCompanyId(Long companyId) {
+		this.companyId = companyId;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
 	}
     
     

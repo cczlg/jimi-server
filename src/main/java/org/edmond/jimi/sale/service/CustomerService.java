@@ -5,4 +5,6 @@ import org.edmond.mywebapp.base.BaseService;
 
 public interface CustomerService extends BaseService<Customer> {
 
+	boolean checkNameExist(String name);
+
 }

@@ -17,7 +17,7 @@
 
 		<!-- Breadcrumb -->
 		<div class="bread-crumb pull-right">
-			<a href="${ctx}/tml"><i class="icon-home"></i> 首页</a>
+			<a href="${ctx}/"><i class="icon-home"></i> 首页</a>
 			<!-- Divider -->
 			<span class="divider">/</span> <a href="#" class="bread-current">订单管理</a>
 		</div>
@@ -47,7 +47,7 @@
 							<div class="pull-left">订单</div>
 							<div class="widget-icons pull-right">
 								<button class="btn"
-									onclick="window.location.href='${ctx}/admin/role/'">创建</button>
+									onclick="window.location.href='${ctx}/jimi/order/'">创建</button>
 								<a href="#" class="wminimize"><i class="icon-chevron-up"></i></a>
 							</div>
 							<div class="clearfix"></div>
@@ -59,29 +59,37 @@
 								<thead>
 									<tr>
 										<th>#</th>
-										<th>订单名</th>
-										<th>描述</th>
+										<th>公司</th>
+										<th>订单号</th>
+										<th>业务员</th>
+										<th>订单日期</th>
+										<th>订单金额</th>
+										<th>客户</th>
+										<th>客户电话</th>
+										<th>地址</th>
 										<th>管理</th>
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${roles}" var="role" varStatus="idx">
+									<c:forEach items="${orders}" var="order" varStatus="idx">
 										<tr>
 											<td>${idx.index+1}</td>
-											<td>${role.name}</td>
-											<td>${role.description }</td>
+											<td>${order.companyId}</td>
+											<td>${order.code}</td>
+											<td>${order.employeeId}</td>
+											<td>${order.orderTime}</td>
+											<td>${order.total}</td>
+											<td>${order.customer}</td>
+											<td>${order.customerphone}</td>
+											<td>${order.address}</td>
 											<td>
 												<div class="btn-group1">
 													<button class="btn btn-xs btn-warning"
-														onclick="{location.href='${ctx}/admin/role/update/${role.id}'}">
+														onclick="{location.href='${ctx}/jimi/order/update/${order.id}'}">
 														<i class="icon-pencil"></i>
 													</button>
-													<button class="btn btn-xs btn-success"
-														onclick="{location.href='${ctx}/admin/role/authorized/${role.id}'}">
-														<i class="icon-ok"></i>
-													</button>
 													<button class="btn btn-xs btn-danger"
-														onclick="{location.href='${ctx}/admin/role/delete/${role.id}'}">
+														onclick="{location.href='${ctx}/jimi/order/delete/${order.id}'}">
 														<i class="icon-remove"></i>
 													</button>
 												</div>

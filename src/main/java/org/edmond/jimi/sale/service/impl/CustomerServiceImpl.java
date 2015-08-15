@@ -1,7 +1,10 @@
 package org.edmond.jimi.sale.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.edmond.jimi.company.entity.Employee;
 import org.edmond.jimi.sale.dao.CustomerDao;
 import org.edmond.jimi.sale.entity.Customer;
 import org.edmond.jimi.sale.service.CustomerService;
@@ -15,31 +18,36 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public List<Customer> list() {
-		// TODO Auto-generated method stub
-		return null;
+		return customerDao.getAll();
 	}
 
 	@Override
 	public void update(Customer entity) {
-		// TODO Auto-generated method stub
-		
+		customerDao.update(entity);
 	}
 
 	@Override
 	public Customer get(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return customerDao.get(id);
 	}
 
 	@Override
 	public void delete(Long id) {
-		// TODO Auto-generated method stub
-		
+		customerDao.delete(id);
 	}
 
 	@Override
 	public void insert(Customer entity) {
-		// TODO Auto-generated method stub
-		
+		customerDao.insert(entity);
+	}
+	@Override
+	public boolean checkNameExist(String name) {
+		Map<String, Object> paramMap=new HashMap<String, Object>();
+		paramMap.put("name", name);
+		List<Customer> list= customerDao.search(paramMap);
+		if(list!=null && list.size()>0){
+			return true;
+		}
+		return false;
 	}
 }

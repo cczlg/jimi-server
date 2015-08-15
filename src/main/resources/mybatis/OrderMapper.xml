@@ -2,48 +2,81 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace必须指向Dao接口 -->
-<mapper namespace="org.edmond.jimi.sale.dao.EmployeeDao">
-	<insert id="insert" parameterType="Employee" useGeneratedKeys="true"
+<mapper namespace="org.edmond.jimi.sale.dao.OrderDao">
+	<insert id="insert" parameterType="Order" useGeneratedKeys="true"
 		keyProperty="id">
-		insert into ss_permission
-		(permission,description)
-		values(#{permission},#{description})
+		insert into jimi_order
+		(companyId,employeeId,code,orderTime,customerId,customer,total,salesman,address,customerphone)
+		values(#{companyId},#{employeeId},#{code},#{orderTime},#{customerId},#{customer},#{total},#{salesman},#{address},#{customerphone})
 	</insert>
 	<!-- 获取用户-->
-	<select id="get" parameterType="int" resultType="Employee">
-		select id, 
-		permission,
-		description
-		from ss_permission
+	<select id="get" parameterType="int" resultType="Order">
+		select id, companyId,employeeId,code,orderTime,customerId,customer,total,salesman,address,customerphone
+		from jimi_order
 		where id=#{id}
 	</select>
 
 	<!-- 查询用户,演示: 1.输入用map传入多个参数 2.<where>语句, 智能添加where和and关键字 3.输出直接映射对象 -->
-	<select id="search" parameterType="map" resultType="Employee">
-		select id,  permission,description
-		from ss_permission
+	<select id="search" parameterType="map" resultType="Order">
+		select id,  companyId,employeeId,code,orderTime,customerId,customer,total,salesman,address,customerphone
+		from jimi_order
 		<where>
-			<if test="permission != null">
-				permission=#{permission}
+			<if test="companyId != null">
+				companyId=#{companyId}
+			</if>
+			<if test="employeeId != null">
+				employeeId=#{employeeId}
+			</if>
+			<if test="code != null">
+				code=#{code}
+			</if>
+			<if test="orderTime != null">
+				orderTime=#{orderTime}
+			</if>
+			<if test="customerId != null">
+				customerId=#{customerId}
+			</if>
+			<if test="customer != null">
+				customer=#{customer}
+			</if>
+			<if test="total != null">
+				total=#{total}
+			</if>
+			<if test="salesman != null">
+				salesman=#{salesman}
+			</if>
+			<if test="address != null">
+				address=#{address}
+			</if>
+			<if test="customerphone != null">
+				customerphone=#{customerphone}
 			</if>
 		</where>
 	</select>
 
 	<!-- 删除 -->
 	<delete id="delete" parameterType="int">
-		delete from ss_permission where id=#{id};
-		delete from ss_role_permission  where role_id=#{id};
+		delete from jimi_order where id=#{id};
 	</delete>
 
-	<update id="update" parameterType="Employee">
-		update ss_permission set 
-		description=#{description}
+	<update id="update" parameterType="Order">
+		update jimi_order set 
+				companyId=#{companyId},
+				employeeId=#{employeeId},
+				code=#{code},
+				orderTime=#{orderTime},
+				customerId=#{customerId},
+				customer=#{customer},
+				total=#{total},
+				salesman=#{salesman},
+				address=#{address},
+				customerphone=#{customerphone}
 		where id=#{id}
 	</update>
 
-	<select id="getAll" resultType="Employee">
-		select id,  permission,description
-		from ss_permission
+	<select id="getAll" resultType="Order">
+		select id,  companyId,employeeId,code,orderTime,customerId,customer,total,salesman,address,customerphone
+		from jimi_order
 	</select>
 	
 	

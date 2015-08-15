@@ -5,4 +5,6 @@ import org.edmond.mywebapp.base.BaseService;
 
 public interface EmployeeService extends BaseService<Employee> {
 
+	boolean checkPhoneExist(String name);
+
 }

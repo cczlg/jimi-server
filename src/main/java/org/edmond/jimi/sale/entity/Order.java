@@ -18,6 +18,7 @@ public class Order extends IdEntity {
 	private Long companyId;
 	private String code = "";
 	private Date orderTime;
+	private Long customerId;
 	private String customer = "";
 	private double total;
 	private String salesman = "";
@@ -71,6 +72,24 @@ public class Order extends IdEntity {
 	}
 	public void setItems(List<OrderItem> items) {
 		this.items = items;
+	}
+	public Long getEmployeeId() {
+		return employeeId;
+	}
+	public void setEmployeeId(Long employeeId) {
+		this.employeeId = employeeId;
+	}
+	public Long getCompanyId() {
+		return companyId;
+	}
+	public void setCompanyId(Long companyId) {
+		this.companyId = companyId;
+	}
+	public Long getCustomerId() {
+		return customerId;
+	}
+	public void setCustomerId(Long customerId) {
+		this.customerId = customerId;
 	}
 	
 	

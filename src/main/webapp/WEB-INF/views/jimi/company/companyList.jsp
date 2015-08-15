@@ -47,8 +47,8 @@
 							<div class="pull-left">公司</div>
 							<div class="widget-icons pull-right">
 								<button class="btn"
-									onclick="window.location.href='${ctx}/admin/role/'">创建</button>
-								<a href="#" class="wminimize"><i class="icon-chevron-up"></i></a>
+									onclick="window.location.href='${ctx}/jimi/company/'">创建</button>
+								<a href="#" class="wminimize"><i class="glyphicon glyphicon-chevron-up"></i></a>
 							</div>
 							<div class="clearfix"></div>
 						</div>
@@ -59,31 +59,50 @@
 								<thead>
 									<tr>
 										<th>#</th>
-										<th>公司名</th>
-										<th>描述</th>
+										<th>公司名称</th>
+										<th>地址</th>
+										<th>联系人</th>
+										<th>联系电话</th>
+										<th>备注</th>
+										<th>状态</th>
 										<th>管理</th>
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${roles}" var="role" varStatus="idx">
+									<c:forEach items="${companies}" var="company" varStatus="idx">
 										<tr>
 											<td>${idx.index+1}</td>
-											<td>${role.name}</td>
-											<td>${role.description }</td>
+											<td>${company.name}</td>
+											<td>${company.address }</td>
+											<td>${company.linkMan }</td>
+											<td>${company.linkPhone }</td>
+											<td>${company.memo }</td>
+											<td>
+												<c:if test="${company.status eq 'enabled' }">
+												已启用
+												</c:if>
+												<c:if test="${company.status eq 'disabled' }">
+												已禁用
+												</c:if>
+											</td>
 											<td>
 												<div class="btn-group1">
-													<button class="btn btn-xs btn-warning"
-														onclick="{location.href='${ctx}/admin/role/update/${role.id}'}">
-														<i class="icon-pencil"></i>
+													<button class="btn btn-xs btn-warning" 
+														onclick="{location.href='${ctx}/jimi/company/update/${company.id}'}">
+														<i class="glyphicon glyphicon-pencil"></i>
 													</button>
-													<button class="btn btn-xs btn-success"
-														onclick="{location.href='${ctx}/admin/role/authorized/${role.id}'}">
-														<i class="icon-ok"></i>
+													<c:if test="${company.status eq 'enabled' }">
+													<button class="btn btn-xs btn-danger" 
+														onclick="{location.href='${ctx}/jimi/company/changeStatus?id=${company.id}&status=disabled'}">
+														<i class="glyphicon glyphicon-ban-circle"></i>
 													</button>
-													<button class="btn btn-xs btn-danger"
-														onclick="{location.href='${ctx}/admin/role/delete/${role.id}'}">
-														<i class="icon-remove"></i>
+													</c:if>
+													<c:if test="${company.status eq 'disabled' }">
+													<button class="btn btn-xs btn-success" 
+														onclick="{location.href='${ctx}/jimi/company/changeStatus?id=${company.id}&status=enabled'}">
+														<i class="glyphicon glyphicon-ok-circle"></i>
 													</button>
+													</c:if>
 												</div>
 											</td>
 										</tr>

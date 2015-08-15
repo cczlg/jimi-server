@@ -4,7 +4,7 @@
 
 <html>
 <head>
-	<title>角色管理</title>
+	<title>订单管理</title>
 	
 	<script>
 		$(document).ready(function() {
@@ -14,12 +14,12 @@
 			$("#inputForm").validate({
 				rules: {
 					loginName: {
-						remote: "${ctx}/admin/role/checkName"
+						remote: "${ctx}/jimi/order/checkName"
 					}
 				},
 				messages: {
 					loginName: {
-						remote: "角色名已存在"
+						remote: "订单名已存在"
 					}
 				}
 			});
@@ -32,7 +32,7 @@
 	<div class="page-head">
 		<!-- Page heading -->
 		<h2 class="pull-left">
-			角色管理
+			订单管理
 			<!-- page meta -->
 			<span class="page-meta">Something Goes Here</span>
 		</h2>
@@ -42,7 +42,7 @@
 		<div class="bread-crumb pull-right">
 			<a href="${ctx}/"><i class="icon-home"></i> 首页</a>
 			<!-- Divider -->
-			<span class="divider">/</span> <a href="#" class="bread-current">角色管理</a>
+			<span class="divider">/</span> <a href="#" class="bread-current">订单管理</a>
 		</div>
 
 		<div class="clearfix"></div>
@@ -65,7 +65,7 @@
 					<div class="widget wgreen">
 
 						<div class="widget-head">
-							<div class="pull-left">角色信息</div>
+							<div class="pull-left">订单信息</div>
 							<div class="widget-icons pull-right">
 								<a href="#" class="wminimize"><i class="icon-chevron-up"></i></a>
 								<a href="#" class="wclose"><i class="icon-remove"></i></a>
@@ -77,21 +77,61 @@
 							<div class="padd">
 
 								<!-- Form starts.  -->
-								<form class="form-horizontal" role="form" id="inputForm" action="${ctx}/admin/role/" method="post" autocomplete="off">
+								<form class="form-horizontal" role="form" id="inputForm" action="${ctx}/jimi/order/" method="post" autocomplete="off">
 
 									<div class="form-group">
-										<label class="col-lg-4 control-label" for="name">角色名</label>
+										<label class="col-lg-4 control-label" for="companyId">公司</label>
 										<div class="col-lg-8">
-											<input type="text" id="name" name="name"
-												class="form-control required" placeholder="角色名称">
+											<input type="text" id="companyId" name="companyId"
+												class="form-control required" placeholder="公司">
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="name" class="col-lg-4 control-label"
-											for="loginName">描述</label>
+										<label class="col-lg-4 control-label" for="employeeId">业务员</label>
 										<div class="col-lg-8">
-											<input type="text" id="description" name="description"
-												class="form-control" placeholder="描述">
+											<input type="text" id="employeeId" name="employeeId"
+												class="form-control required" placeholder="业务员">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-lg-4 control-label" for="code">订单号</label>
+										<div class="col-lg-8">
+											<input type="text" id="code" name="code"
+												class="form-control " placeholder="订单号">
+										</div>
+									</div>
+									<!-- <div class="form-group">
+										<label class="col-lg-4 control-label" for="orderTime">订单时间</label>
+										<div class="col-lg-8">
+											<input type="text" id="orderTime" name="orderTime"
+												class="form-control " placeholder="订单时间">
+										</div>
+									</div> -->
+									<div class="form-group">
+										<label class="col-lg-4 control-label" for="customer">客户</label>
+										<div class="col-lg-8">
+											<input type="text" id="customer" name="customer"
+												class="form-control required" placeholder="客户">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-lg-4 control-label" for="customerphone">客户电话</label>
+										<div class="col-lg-8">
+											<input type="text" id="customerphone" name="customerphone"
+												class="form-control " placeholder="客户电话">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-lg-4 control-label" for="address">送货地址</label>
+										<div class="col-lg-8">
+											<input type="text" id="address" name="address"
+												class="form-control " placeholder="送货地址">
+										</div>
+									</div><div class="form-group">
+										<label class="col-lg-4 control-label" for="total">订单金额</label>
+										<div class="col-lg-8">
+											<input type="text" id="total" name="total"
+												class="form-control " placeholder="订单金额" value="0">
 										</div>
 									</div>
 

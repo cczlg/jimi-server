@@ -5,45 +5,67 @@
 <mapper namespace="org.edmond.jimi.sale.dao.ProductDao">
 	<insert id="insert" parameterType="Product" useGeneratedKeys="true"
 		keyProperty="id">
-		insert into ss_permission
-		(permission,description)
-		values(#{permission},#{description})
+		insert into jimi_product
+		(companyId,product,purchasePrice,price,memo,image,status)
+		values(#{companyId},#{product},#{purchasePrice},#{price},#{memo},#{image},#{status})
 	</insert>
 	<!-- 获取用户-->
 	<select id="get" parameterType="int" resultType="Product">
 		select id, 
-		permission,
-		description
-		from ss_permission
+		companyId,product,purchasePrice,price,memo,image,status
+		from jimi_product
 		where id=#{id}
 	</select>
 
 	<!-- 查询用户,演示: 1.输入用map传入多个参数 2.<where>语句, 智能添加where和and关键字 3.输出直接映射对象 -->
 	<select id="search" parameterType="map" resultType="Product">
-		select id,  permission,description
-		from ss_permission
+		select id,  companyId,product,purchasePrice,price,memo,image,status
+		from jimi_product
 		<where>
-			<if test="permission != null">
-				permission=#{permission}
+			<if test="companyId != null">
+				companyId=#{companyId}
+			</if>
+			<if test="product != null">
+				product=#{product}
+			</if>
+			<if test="purchasePrice != null">
+				purchasePrice=#{purchasePrice}
+			</if>
+			<if test="price != null">
+				price=#{price}
+			</if>
+			<if test="memo != null">
+				memo=#{memo}
+			</if>
+			<if test="image != null">
+				image=#{image}
+			</if>
+			<if test="status !=null">
+				status=#{status}
 			</if>
 		</where>
 	</select>
 
 	<!-- 删除 -->
 	<delete id="delete" parameterType="int">
-		delete from ss_permission where id=#{id};
-		delete from ss_role_permission  where role_id=#{id};
+		delete from jimi_product where id=#{id};
 	</delete>
 
 	<update id="update" parameterType="Product">
-		update ss_permission set 
-		description=#{description}
+		update jimi_product set 
+				companyId=#{companyId},
+				product=#{product},
+				purchasePrice=#{purchasePrice},
+				price=#{price},
+				memo=#{memo},
+				image=#{image},
+				status=#{status}
 		where id=#{id}
 	</update>
 
 	<select id="getAll" resultType="Product">
-		select id,  permission,description
-		from ss_permission
+		select id,  companyId,product,purchasePrice,price,memo,image,status
+		from jimi_product
 	</select>
 	
 	

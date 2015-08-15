@@ -5,46 +5,76 @@
 <mapper namespace="org.edmond.jimi.company.dao.EmployeeDao">
 	<insert id="insert" parameterType="Employee" useGeneratedKeys="true"
 		keyProperty="id">
-		insert into ss_permission
-		(permission,description)
-		values(#{permission},#{description})
+		insert into jimi_employee
+		(companyId,name,phone,phoneIMEI,status,creator,updater,createDate,updateDate)
+		values(#{companyId},#{name},#{phone},#{phoneIMEI},#{status},#{creator},#{updater},#{createDate},#{updateDate})
 	</insert>
-	<!-- 获取用户-->
+	<!-- 获取用户 -->
 	<select id="get" parameterType="int" resultType="Employee">
-		select id, 
-		permission,
-		description
-		from ss_permission
+		select id,
+		companyId,name,phone,phoneIMEI,status,creator,updater,createDate,updateDate
+		from jimi_employee
 		where id=#{id}
 	</select>
 
 	<!-- 查询用户,演示: 1.输入用map传入多个参数 2.<where>语句, 智能添加where和and关键字 3.输出直接映射对象 -->
 	<select id="search" parameterType="map" resultType="Employee">
-		select id,  permission,description
-		from ss_permission
+		select
+		id,companyId,name,phone,phoneIMEI,status,creator,updater,createDate,updateDate
+		from jimi_employee
 		<where>
-			<if test="permission != null">
-				permission=#{permission}
+			<if test="companyId != null">
+				companyId=#{companyId}
+			</if>
+			<if test="name != null">
+				name=#{name}
+			</if>
+			<if test="phone != null">
+				phone=#{phone}
+			</if>
+			<if test="phoneIMEI != null">
+				phoneIMEI=#{phoneIMEI}
+			</if>
+			<if test="status != null">
+				status=#{status}
+			</if>
+			<if test="creator != null">
+				creator=#{creator}
+			</if>
+			<if test="updater != null">
+				updater=#{updater}
+			</if>
+			<if test="createDate != null">
+				createDate=#{createDate}
+			</if>
+			<if test="updateDate != null">
+				updateDate=#{updateDate}
 			</if>
 		</where>
 	</select>
 
 	<!-- 删除 -->
 	<delete id="delete" parameterType="int">
-		delete from ss_permission where id=#{id};
-		delete from ss_role_permission  where role_id=#{id};
+		delete from jimi_employee
+		where id=#{id};
 	</delete>
 
 	<update id="update" parameterType="Employee">
-		update ss_permission set 
-		description=#{description}
+		update jimi_employee set
+		name=#{name},
+		phone=#{phone},
+		phoneIMEI=#{phoneIMEI},
+		status=#{status},
+		updater=#{updater},
+		updateDate=#{updateDate}
 		where id=#{id}
 	</update>
 
 	<select id="getAll" resultType="Employee">
-		select id,  permission,description
-		from ss_permission
+		select
+		id,companyId,name,phone,phoneIMEI,status,creator,updater,createDate,updateDate
+		from jimi_employee
 	</select>
-	
-	
+
+
 </mapper> 

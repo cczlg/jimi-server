@@ -1,11 +1,15 @@
 package org.edmond.jimi.sale.web;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
 
+import org.apache.shiro.SecurityUtils;
+import org.edmond.jimi.Constants;
 import org.edmond.jimi.sale.entity.Order;
 import org.edmond.jimi.sale.service.OrderService;
+import org.edmond.mywebapp.system.service.ShiroDbRealm.ShiroUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -49,6 +53,9 @@ public class OrderController {
 		{
 			return "error/error";
 		}
+		ShiroUser user = (ShiroUser) SecurityUtils.getSubject().getPrincipal();
+		order.setCreator(user.loginName);
+		order.setCreateDate(new Date(System.currentTimeMillis()));
 		orderService.insert(order);
 		redirectAttributes.addFlashAttribute("message", "创建订单" + order.getCode() + "成功");
 		return "redirect:/jimi/order/orders";

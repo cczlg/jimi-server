@@ -16,6 +16,8 @@ public class Customer extends IdEntity {
 	private double score;
 	private Long employeeId;
 	private Long companyId;
+	private String status;
+	private String memo;
 	
 	
 	public String getName() {
@@ -53,6 +55,18 @@ public class Customer extends IdEntity {
 	}
 	public void setCompanyId(Long companyId) {
 		this.companyId = companyId;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public String getMemo() {
+		return memo;
+	}
+	public void setMemo(String memo) {
+		this.memo = memo;
 	}
 	
 	

@@ -15,31 +15,26 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<Product> list() {
-		// TODO Auto-generated method stub
-		return null;
+		return productDao.getAll();
 	}
 
 	@Override
 	public void update(Product entity) {
-		// TODO Auto-generated method stub
-		
+		productDao.update(entity);
 	}
 
 	@Override
 	public Product get(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return productDao.get(id);
 	}
 
 	@Override
 	public void delete(Long id) {
-		// TODO Auto-generated method stub
-		
+		productDao.delete(id);
 	}
 
 	@Override
 	public void insert(Product entity) {
-		// TODO Auto-generated method stub
-		
+		productDao.insert(entity);
 	}
 }
