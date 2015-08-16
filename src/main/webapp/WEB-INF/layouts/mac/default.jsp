@@ -32,7 +32,7 @@
 	<!-- Star rating -->
 <link rel="stylesheet" href="${ctx}/resources/style/rateit.css">
 	<!-- Date picker -->
-<link rel="stylesheet" href="${ctx}/resources/style/bootstrap-datetimepicker.min.css">
+<%-- <link rel="stylesheet" href="${ctx}/resources/style/bootstrap-datetimepicker.min.css"> --%>
 	<!-- CLEditor -->
 <link rel="stylesheet" href="${ctx}/resources/style/jquery.cleditor.css">
 	<!-- Uniform -->
@@ -257,7 +257,7 @@
 	<!-- CLEditor -->
 	<script src="${ctx}/resources/js/jquery.cleditor.min.js"></script>
 	<!-- Date picker -->
-	<script src="${ctx}/resources/js/bootstrap-datetimepicker.min.js"></script>
+	<%-- <script src="${ctx}/resources/js/bootstrap-datetimepicker.min.js"></script> --%>
 	<!-- jQuery Uniform -->
 	<%-- <script src="${ctx}/resources/js/jquery.uniform.min.js"></script> --%>
 	<!-- Bootstrap Toggle -->

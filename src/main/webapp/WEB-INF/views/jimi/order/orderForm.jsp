@@ -6,6 +6,9 @@
 <html>
 <head>
 	<title>订单管理</title>
+	<link
+	href="${ctx}/resources/style/bootstrap-datetimepicker.min.css"
+	type="text/css" rel="stylesheet" />
 </head>
 
 <body>
@@ -81,13 +84,23 @@
 												class="form-control " placeholder="订单号" value="${order.code}" readonly="readonly">
 										</div>
 									</div>
-									<%-- <div class="form-group">
+									<div class="form-group">
 										<label class="col-lg-4 control-label" for="orderTime">下单时间</label>
-										<div class="col-lg-8">
+										<%-- <div class="col-lg-8">
 											<input type="text" id="orderTime" name="orderTime"
 												class="form-control " placeholder="下单时间" value="${order.orderTime}" readonly="readonly">
+										</div> --%>
+										
+										<div class="col-lg-8 input-append date form_date" data-date=""
+											data-date-format="yyyy-mm-dd" data-link-field="orderTime"
+											data-link-format="yyyy-mm-dd" style="display: block">
+											<input size="16" type="text" value="<fmt:formatDate value="${order.orderTime } pattern="yyyy-MM-dd" />" readonly> 
+											<span
+												class="add-on"><i class="icon-remove"></i></span> <span
+												class="add-on"><i class="icon-th"></i></span>
 										</div>
-									</div> --%>
+										<input type="hidden" id="orderTime" name="orderTime" value="${order.orderTime }" />
+									</div> 
 									<div class="form-group">
 										<label class="col-lg-4 control-label" for="customer">客户</label>
 										<div class="col-lg-8">
@@ -140,12 +153,27 @@
 	</div>
 
 	<!-- Matter ends -->
+	<script type="text/javascript"
+		src="${ctx}/resources/js/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript"
+		src="${ctx}/resources/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
 	<script>
 		$(document).ready(function() {
 			//聚焦第一个输入框
 			$("#name").focus();
 			//为inputForm注册validate函数
 			$("#inputForm").validate();
+			
+			$('.form_date').datetimepicker({
+				language : 'zh-CN',
+				weekStart : 1,
+				todayBtn : 1,
+				autoclose : 1,
+				todayHighlight : 1,
+				startView : 2,
+				minView : 2,
+				forceParse : 0
+			});
 		});
 	</script>
 </body>

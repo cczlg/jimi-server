@@ -1,30 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 
 <html>
 <head>
 	<title>订单管理</title>
 	
-	<script>
-		$(document).ready(function() {
-			//聚焦第一个输入框
-			$("#loginName").focus();
-			//为inputForm注册validate函数
-			$("#inputForm").validate({
-				rules: {
-					loginName: {
-						remote: "${ctx}/jimi/order/checkName"
-					}
-				},
-				messages: {
-					loginName: {
-						remote: "订单名已存在"
-					}
-				}
-			});
-		});
-	</script>
+	<link
+	href="${ctx}/resources/js/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css"
+	type="text/css" rel="stylesheet" />
+	
 </head>
 
 <body>	
@@ -100,13 +86,22 @@
 												class="form-control " placeholder="订单号">
 										</div>
 									</div>
-									<!-- <div class="form-group">
+									<div class="form-group">
 										<label class="col-lg-4 control-label" for="orderTime">订单时间</label>
-										<div class="col-lg-8">
+										<!-- <div class="col-lg-8">
 											<input type="text" id="orderTime" name="orderTime"
 												class="form-control " placeholder="订单时间">
+										</div> -->
+										
+										<div class="col-lg-8 input-append date form_date" data-date=""
+											data-date-format="yyyy-mm-dd" data-link-field="orderTime"
+											data-link-format="yyyy-mm-dd" style="display: block">
+											<input size="16" type="text" value="" readonly> <span
+												class="add-on"><i class="icon-remove"></i></span> <span
+												class="add-on"><i class="icon-th"></i></span>
 										</div>
-									</div> -->
+										<input type="hidden" id="orderTime" name="orderTime" value="" />
+									</div>
 									<div class="form-group">
 										<label class="col-lg-4 control-label" for="customer">客户</label>
 										<div class="col-lg-8">
@@ -156,5 +151,41 @@
 	</div>
 
 	<!-- Matter ends -->
+	
+	<script type="text/javascript"
+		src="${ctx}/resources/js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+	<script type="text/javascript"
+		src="${ctx}/resources/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+	<script>
+		$(document).ready(function() {
+			//聚焦第一个输入框
+			$("#loginName").focus();
+			//为inputForm注册validate函数
+			$("#inputForm").validate({
+				rules: {
+					loginName: {
+						remote: "${ctx}/jimi/order/checkName"
+					}
+				},
+				messages: {
+					loginName: {
+						remote: "订单名已存在"
+					}
+				}
+			});
+			
+			
+			$('.form_date').datetimepicker({
+				language : 'zh-CN',
+				weekStart : 1,
+				todayBtn : 1,
+				autoclose : 1,
+				todayHighlight : 1,
+				startView : 2,
+				minView : 2,
+				forceParse : 0
+			});
+		});
+	</script>
 </body>
 </html>

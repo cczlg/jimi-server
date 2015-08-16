@@ -24,6 +24,7 @@ public class Order extends IdEntity {
 	private String salesman = "";
 	private String address = "";
 	private String customerphone = "";
+	
 	private List<OrderItem> items = new ArrayList<OrderItem>();
 	public String getCode() {
 		return code;
