@@ -71,7 +71,7 @@ CREATE TABLE `jimi`.`jimi_company` (
   `createDate` DATETIME NULL,
   `updateDate` DATETIME NULL,
   `status` VARCHAR(20) NULL ,
-  `memo` VARCHAR(255) NULL
+  `memo` VARCHAR(255) NULL,
   PRIMARY KEY (`id`));
 
  CREATE TABLE `jimi`.`jimi_employee` (
@@ -96,6 +96,7 @@ CREATE TABLE `jimi`.`jimi_company` (
   `address` VARCHAR(200) NULL,
   `score` DOUBLE NULL,
   `status` VARCHAR(20) NULL,
+  `memo` VARCHAR(255) NULL,
   `creator` VARCHAR(45) NULL,
   `updater` VARCHAR(45) NULL,
   `createDate` DATETIME NULL,
@@ -137,5 +138,5 @@ CREATE TABLE `jimi`.`jimi_company` (
   `price` DOUBLE NULL,
   `memo` VARCHAR(255) NULL,
   `image` VARCHAR(255) NULL,
-  `status` VARCHAR(20) NULL
+  `status` VARCHAR(20) NULL,
   PRIMARY KEY (`id`));
