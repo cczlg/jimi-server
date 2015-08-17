@@ -7,9 +7,7 @@
 <head>
 	<title>订单管理</title>
 	
-	<link
-	href="${ctx}/resources/js/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css"
-	type="text/css" rel="stylesheet" />
+	
 	
 </head>
 
@@ -152,10 +150,7 @@
 
 	<!-- Matter ends -->
 	
-	<script type="text/javascript"
-		src="${ctx}/resources/js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
-	<script type="text/javascript"
-		src="${ctx}/resources/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+	
 	<script>
 		$(document).ready(function() {
 			//聚焦第一个输入框

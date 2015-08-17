@@ -33,6 +33,9 @@
 <link rel="stylesheet" href="${ctx}/resources/style/rateit.css">
 	<!-- Date picker -->
 <%-- <link rel="stylesheet" href="${ctx}/resources/style/bootstrap-datetimepicker.min.css"> --%>
+<link
+	href="${ctx}/resources/js/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css"
+	type="text/css" rel="stylesheet" />
 	<!-- CLEditor -->
 <link rel="stylesheet" href="${ctx}/resources/style/jquery.cleditor.css">
 	<!-- Uniform -->
@@ -258,6 +261,10 @@
 	<script src="${ctx}/resources/js/jquery.cleditor.min.js"></script>
 	<!-- Date picker -->
 	<%-- <script src="${ctx}/resources/js/bootstrap-datetimepicker.min.js"></script> --%>
+	<script type="text/javascript"
+		src="${ctx}/resources/js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+	<script type="text/javascript"
+		src="${ctx}/resources/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
 	<!-- jQuery Uniform -->
 	<%-- <script src="${ctx}/resources/js/jquery.uniform.min.js"></script> --%>
 	<!-- Bootstrap Toggle -->
