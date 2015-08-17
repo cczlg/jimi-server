@@ -92,7 +92,7 @@
 										<div class="col-lg-8 input-append date form_date" data-date=""
 											data-date-format="yyyy-mm-dd" data-link-field="orderTime"
 											data-link-format="yyyy-mm-dd" style="display: block">
-											<input size="16" type="text" value="<fmt:formatDate value="${order.orderTime } pattern="yyyy-MM-dd" />" readonly> 
+											<input size="16" type="text" value="<fmt:formatDate value="${order.orderTime }" pattern="yyyy-MM-dd" />" readonly="readonly"> 
 											<span
 												class="add-on"><i class="icon-remove"></i></span> <span
 												class="add-on"><i class="icon-th"></i></span>

@@ -77,7 +77,7 @@
 											<td>${order.companyId}</td>
 											<td>${order.code}</td>
 											<td>${order.employeeId}</td>
-											<td>${order.orderTime}</td>
+											<td><fmt:formatDate value="${order.orderTime }" pattern="yyyy-MM-dd" /></td>
 											<td>${order.total}</td>
 											<td>${order.customer}</td>
 											<td>${order.customerphone}</td>

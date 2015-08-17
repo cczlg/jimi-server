@@ -7,6 +7,7 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import org.edmond.mywebapp.base.entity.IdEntity;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @XmlRootElement(name = "Order")
 public class Order extends IdEntity {
@@ -17,6 +18,7 @@ public class Order extends IdEntity {
 	private Long employeeId;
 	private Long companyId;
 	private String code = "";
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date orderTime;
 	private Long customerId;
 	private String customer = "";
