@@ -51,4 +51,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 		}
 		return false;
 	}
+
+	@Override
+	public List<Employee> search(Map<String, Object> paramMap) {
+		return employeeDao.search(paramMap);
+	}
 }

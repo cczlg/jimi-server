@@ -1,6 +1,7 @@
 package org.edmond.jimi.sale.web;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -105,5 +107,11 @@ public class ProductController {
 		productService.update(product);
 		redirectAttributes.addFlashAttribute("message", "设置产品" + product.getProduct() + "成功");
 		return "redirect:/jimi/product/products";
+	}
+	
+	@RequestMapping(value="search")
+	@ResponseBody
+	public List<Product> search(){
+		return productService.search(new HashMap<String, Object>());
 	}
 }

@@ -50,4 +50,9 @@ public class CustomerServiceImpl implements CustomerService {
 		}
 		return false;
 	}
+
+	@Override
+	public List<Customer> search(Map<String, Object> paramMap) {
+		return customerDao.search(paramMap);
+	}
 }

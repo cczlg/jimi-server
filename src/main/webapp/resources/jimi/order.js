@@ -114,7 +114,7 @@ order.mtlSearchOk=function(){
 
 order.queryMtl=function(){
 	$.ajax({
-		url:ctx+"/material/search",
+		url:ctx+"/product/search",
 		data:"",
 	success: function(result){
 		if(result.success==true){
@@ -122,10 +122,9 @@ order.queryMtl=function(){
 			$.each(result.data,function(i,mtl){
 				var tr='<tr>';
 				tr+=('<td><input type="radio" name="selectRow" data-mtl=\''+JSON.stringify(mtl)+'\' ></td>');
-				tr+=('<td>'+mtl.code+'</td>');
-				tr+=('<td>'+mtl.name+'</td>');
-				tr+=('<td>'+mtl.brand+'</td>');
-				tr+=('<td>'+mtl.model+'</td>');
+				tr+=('<td>'+mtl.id+'</td>');
+				tr+=('<td>'+mtl.product+'</td>');
+				tr+=('<td>'+mtl.price+'</td>');
 				tr+='</tr>';
 				
 				tbody.append($(tr));

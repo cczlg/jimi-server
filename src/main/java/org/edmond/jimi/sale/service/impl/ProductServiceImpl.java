@@ -1,6 +1,7 @@
 package org.edmond.jimi.sale.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.edmond.jimi.sale.dao.ProductDao;
 import org.edmond.jimi.sale.entity.Product;
@@ -36,5 +37,10 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public void insert(Product entity) {
 		productDao.insert(entity);
+	}
+
+	@Override
+	public List<Product> search(Map<String, Object> paramMap) {
+		return productDao.search(paramMap);
 	}
 }

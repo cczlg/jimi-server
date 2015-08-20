@@ -50,4 +50,9 @@ public class CompanyServiceImpl implements CompanyService {
 		}
 		return false;
 	}
+
+	@Override
+	public List<Company> search(Map<String, Object> paramMap) {
+		return companyDao.search(paramMap);
+	}
 }

@@ -2,27 +2,30 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace必须指向Dao接口 -->
-<mapper namespace="org.edmond.jimi.sale.dao.OrderItemItemDao">
+<mapper namespace="org.edmond.jimi.sale.dao.OrderItemDao">
 	<insert id="insert" parameterType="OrderItem" useGeneratedKeys="true"
 		keyProperty="id">
 		insert into jimi_order_item
-		(orderCode,customer,productId,product,price,profit,quantity,flag,image)
-		values(#{orderCode},#{customer},#{productId},#{product},#{price},#{profit},#{quantity},#{flag},#{image})
+		(orderCode,customerId,customer,productId,product,price,profit,quantity,flag,image)
+		values(#{orderCode},#{customerId},#{customer},#{productId},#{product},#{price},#{profit},#{quantity},#{flag},#{image})
 	</insert>
 	<!-- 获取用户-->
 	<select id="get" parameterType="int" resultType="OrderItem">
-		select id, orderCode,customer,productId,product,price,profit,quantity,flag,image
+		select id, orderCode,customerId,customer,productId,product,price,profit,quantity,flag,image
 		from jimi_order_item
 		where id=#{id}
 	</select>
 
 	<!-- 查询用户,演示: 1.输入用map传入多个参数 2.<where>语句, 智能添加where和and关键字 3.输出直接映射对象 -->
 	<select id="search" parameterType="map" resultType="OrderItem">
-		select id,  orderCode,customer,productId,product,price,profit,quantity,flag,image
+		select id,  orderCode,customerId,customer,productId,product,price,profit,quantity,flag,image
 		from jimi_order_item
 		<where>
 			<if test="orderCode != null">
 				orderCode=#{orderCode}
+			</if>
+			<if test="customerId!=null">
+				customerId=#{customerId}
 			</if>
 			<if test="customer != null">
 				customer=#{customer}
@@ -62,6 +65,7 @@
 	<update id="update" parameterType="OrderItem">
 		update jimi_order_item set 
 				orderCode=#{orderCode},
+				customerId=#{customerId},
 				customer=#{customer},
 				productId=#{productId},
 				product=#{product},
@@ -74,7 +78,7 @@
 	</update>
 
 	<select id="getAll" resultType="OrderItem">
-		select id,  orderCode,customer,productId,product,price,profit,quantity,flag,image
+		select id,  orderCode,customerId,customer,productId,product,price,profit,quantity,flag,image
 		from jimi_order_item
 	</select>
 	

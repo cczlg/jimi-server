@@ -12,6 +12,7 @@ public class OrderItem extends IdEntity {
 	 */
 	private static final long serialVersionUID = 8436773779205802350L;
 	private String orderCode;
+	private Long customerId;
 	private String customer;
 	private Long productId;
 	private String product;
@@ -74,5 +75,11 @@ public class OrderItem extends IdEntity {
 	}
 	public void setProductId(Long productId) {
 		this.productId = productId;
+	}
+	public Long getCustomerId() {
+		return customerId;
+	}
+	public void setCustomerId(Long customerId) {
+		this.customerId = customerId;
 	}
 }

@@ -180,20 +180,20 @@
 		<tr>
 			<td>
 			<div class="input-append">
-				<input id="productId_{0}" name="orderItems[{0}].productId">
-				<input id="product_{0}" name="orderItems[{0}].product">
+				<input id="productId_{0}" name="items[{0}].productId">
+				<input id="product_{0}" name="items[{0}].product">
 				<button class="btn" type="button" id="productSearchBtn_{0}"><i class="icon-search"></i></button>
 			</div>
 			</td>
 			<td>
-				<input id="price_{0}" name="orderItems[{0}].price" class="input-small price">
+				<input id="price_{0}" name="items[{0}].price" class="input-small price">
 			</td>
 			<td>
-				<input id="quantity_{0}" name="orderItems[{0}].quantity"
+				<input id="quantity_{0}" name="items[{0}].quantity"
 				class="input-small quantity">
 			</td>
 			<td>
-				<input id="subTotal_{0}" name="orderItems[{0}].subTotal"
+				<input id="subTotal_{0}" name="items[{0}].subTotal"
 				class="input-small subTotal">
 			</td>
 		</tr>

@@ -56,8 +56,14 @@ public class OrderServiceImpl implements OrderService {
 		orderDao.insert(entity);
 		if(entity.getItems()!=null){
 			for (OrderItem item : entity.getItems()) {
+				item.setOrderCode(entity.getCode());
 				orderItemDao.insert(item);
 			}
 		}
+	}
+
+	@Override
+	public List<Order> search(Map<String, Object> paramMap) {
+		return orderDao.search(paramMap);
 	}
 }
