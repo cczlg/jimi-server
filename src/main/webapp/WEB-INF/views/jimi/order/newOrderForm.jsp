@@ -200,7 +200,7 @@
 	</textarea>
 	<!-- search dialog -->
 	<!-- Modal product-->
-	<div id="mtlModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div id="productModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	  <div class="modal-header">
 	    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 	    <h3 id="myModalLabel">选择</h3>
@@ -220,13 +220,13 @@
 					<th>规格型号</th>
 				</tr>
 			</thead>
-			<tbody id="mtlResult">
+			<tbody id="productResult">
 	    		
 	    	</tbody>
 	    </table>
 	  </div>
 	  <div class="modal-footer">
-	    <button class="btn btn-primary" id="mtlSearchOk">确定</button>
+	    <button class="btn btn-primary" id="productSearchOk">确定</button>
 	    <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
 	  </div>
 	</div>

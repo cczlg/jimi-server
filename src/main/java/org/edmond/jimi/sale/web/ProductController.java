@@ -11,6 +11,7 @@ import org.edmond.jimi.Constants;
 import org.edmond.jimi.sale.entity.Customer;
 import org.edmond.jimi.sale.entity.Product;
 import org.edmond.jimi.sale.service.ProductService;
+import org.edmond.mywebapp.base.Response;
 import org.edmond.mywebapp.system.service.ShiroDbRealm.ShiroUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,31 +30,31 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class ProductController {
 	@Autowired
 	private ProductService productService;
-	
+
 	@ModelAttribute
 	public void getProduct(@RequestParam(value = "id", defaultValue = "-1") Long id, Model model) {
 		if (id != -1) {
 			model.addAttribute("product", productService.get(id));
 		}
 	}
-	
-	@RequestMapping(value="products",method = RequestMethod.GET)
+
+	@RequestMapping(value = "products", method = RequestMethod.GET)
 	public String list(Model model) {
 		List<Product> products = productService.list();
 		model.addAttribute("products", products);
 
 		return "jimi/product/productList";
 	}
-	
+
 	@RequestMapping(method = RequestMethod.GET)
 	public String insertForm() {
 		return "jimi/product/newProductForm";
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String insert(@Valid @ModelAttribute("product") Product product,BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-		if(bindingResult.hasErrors())
-		{
+	public String insert(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult,
+			RedirectAttributes redirectAttributes) {
+		if (bindingResult.hasErrors()) {
 			return "error/error";
 		}
 
@@ -65,7 +66,7 @@ public class ProductController {
 		redirectAttributes.addFlashAttribute("message", "创建产品" + product.getProduct() + "成功");
 		return "redirect:/jimi/product/products";
 	}
-	
+
 	@RequestMapping(value = "update/{id}", method = RequestMethod.GET)
 	public String updateForm(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("product", productService.get(id));
@@ -73,12 +74,11 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "update", method = RequestMethod.POST)
-	public String update(@Valid @ModelAttribute("product") Product product,BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-		if(bindingResult.hasErrors())
-		{
+	public String update(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult,
+			RedirectAttributes redirectAttributes) {
+		if (bindingResult.hasErrors()) {
 			return "error/error";
 		}
-		
 
 		ShiroUser user = (ShiroUser) SecurityUtils.getSubject().getPrincipal();
 		product.setUpdater(user.loginName);
@@ -95,10 +95,10 @@ public class ProductController {
 		redirectAttributes.addFlashAttribute("message", "删除产品" + product.getProduct() + "成功");
 		return "redirect:/jimi/product/products";
 	}
-	
 
 	@RequestMapping(value = "changeStatus")
-	public String changeStatus(@RequestParam String status,@RequestParam Long id, RedirectAttributes redirectAttributes) {
+	public String changeStatus(@RequestParam String status, @RequestParam Long id,
+			RedirectAttributes redirectAttributes) {
 		Product product = productService.get(id);
 		product.setStatus(status);
 		ShiroUser user = (ShiroUser) SecurityUtils.getSubject().getPrincipal();
@@ -108,10 +108,14 @@ public class ProductController {
 		redirectAttributes.addFlashAttribute("message", "设置产品" + product.getProduct() + "成功");
 		return "redirect:/jimi/product/products";
 	}
-	
-	@RequestMapping(value="search")
+
+	@RequestMapping(value = "search")
 	@ResponseBody
-	public List<Product> search(){
-		return productService.search(new HashMap<String, Object>());
+	public Response search() {
+		Response result=new Response();
+		List<Product> product = productService.search(new HashMap<String, Object>());
+		result.setSuccess(true);
+		result.setData(product);
+		return result;
 	}
 }

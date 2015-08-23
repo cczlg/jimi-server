@@ -97,7 +97,7 @@
 												class="add-on"><i class="icon-remove"></i></span> <span
 												class="add-on"><i class="icon-th"></i></span>
 										</div>
-										<input type="hidden" id="orderTime" name="orderTime" value="${order.orderTime }" />
+										<input type="hidden" id="orderTime" name="orderTime" value="<fmt:formatDate value="${order.orderTime }" pattern="yyyy-MM-dd" />" />
 									</div> 
 									<div class="form-group">
 										<label class="col-lg-4 control-label" for="customer">客户</label>
@@ -127,6 +127,53 @@
 										</div>
 									</div>
 
+									<!-- items start -->
+									<div class="control-group">
+										<button type="button" id="add">增加</button>
+									</div>
+									<div class="control-group">
+										<table id="contentTable"
+											class="table table-striped table-bordered table-condensed">
+											<thead>
+												<tr>
+													<th style="width: 70px;">商品名称</th>
+													<th style="width: 50px;">单价</th>
+													<th style="width: 30px;">数量</th>
+													<th style="width: 50px;">小计</th>
+												</tr>
+											</thead>
+											<tbody id="itemBody">
+												<c:forEach items="${order.items }" var="item"
+													varStatus="status">
+													<tr>
+														<td>
+															<div class="input-append">
+																<input id="productId_${status.index }"
+																	name="items[${status.index }].productId"
+																	value="${item.productId }" class="">
+																<button class="btn" type="button" onclick="order.showProductSearch(event)">
+																	<i class="icon-search"></i>
+																</button>
+															</div>
+														</td>
+														<td><input id="price_${status.index }"
+															name="items[${status.index }].price" value="${item.price }"
+															class="price input-small"></td>
+														<td><input id="quantity_${status.index }"
+															name="items[${status.index }].quantity"
+															value="${item.quantity }" class="quantity input-small"></td>
+														<td><input id="subTotal_${status.index }"
+															name="items[${status.index }].subTotal"
+															value="${item.price*item.quantity }" class="subTotal input-small"></td>
+						
+													</tr>
+												</c:forEach>
+											</tbody>
+
+										</table>
+									</div>
+									<!-- items end -->
+
 									<hr />
 									<div class="form-group">
 										<div class="col-lg-offset-1 col-lg-9">
@@ -151,6 +198,35 @@
 	</div>
 
 	<!-- Matter ends -->
+	
+	<!-- template -->
+	<textarea style="display: none" id="template">
+		<tr>
+			<td>
+			<div class="input-append">
+				<input id="productId_{0}" name="items[{0}].productId">
+				<input id="product_{0}" name="items[{0}].product">
+				<button class="btn" type="button" id="productSearchBtn_{0}"><i class="icon-search"></i></button>
+			</div>
+			</td>
+			<td>
+				<input id="price_{0}" name="items[{0}].price" class="input-small price">
+			</td>
+			<td>
+				<input id="quantity_{0}" name="items[{0}].quantity"
+				class="input-small quantity">
+			</td>
+			<td>
+				<input id="subTotal_{0}" name="items[{0}].subTotal"
+				class="input-small subTotal">
+			</td>
+		</tr>
+	</textarea>
+	
+	<script type="text/javascript">
+	var ctx="${ctx}";
+	</script>
+	<script type="text/javascript" src="${ctx}/resources/jimi/order.js"></script>
 	
 	<script>
 		$(document).ready(function() {

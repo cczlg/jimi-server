@@ -15,7 +15,7 @@ order.calculate=function(event) {
 
 order.addRow=function() {
 	$(order.template(order.rowNo)).appendTo("#itemBody");
-	$('#mtlSearchBtn_'+order.rowNo).click(order.showMtlSearch);
+	$('#productSearchBtn_'+order.rowNo).click(order.showProductSearch);
 	order.rowNo++;
 };
 
@@ -31,7 +31,7 @@ order.billSearchOk=function(){
 		alert("请先选择一行数据");
 		return;
 	}
-	var bill=$(checkedMtl[0]).attr("data-mtl");
+	var bill=$(checkedMtl[0]).attr("data-product");
 	if(typeof bill =="string"){
 		bill=JSON.parse(bill);
 	}
@@ -44,7 +44,7 @@ order.billSearchOk=function(){
 	order.rowNo=0;
 	$.each(bill.items,function(i,item){
 		order.addRow();
-		$('#mtlCode_'+i).val(item.mtlCode);
+		$('#productCode_'+i).val(item.productCode);
 		$('#unit_'+i).val(item.unit);
 		$('#price_'+i).val(item.price);
 		$('#quantity_'+i).val(item.quantity);
@@ -65,7 +65,7 @@ order.queryBill=function(){
 			var tbody=$('#billResult');
 			$.each(result.data,function(i,bill){
 				var tr='<tr>';
-				tr+=('<td><input type="radio" name="selectRow" data-mtl=\''+JSON.stringify(bill)+'\' ></td>');
+				tr+=('<td><input type="radio" name="selectRow" data-product=\''+JSON.stringify(bill)+'\' ></td>');
 				tr+=('<td>'+bill.billNo+'</td>');
 				tr+=('<td>'+bill.vendor+'</td>');
 				tr+=('<td>'+bill.startDate+'</td>');
@@ -85,46 +85,46 @@ order.queryBill=function(){
 	});
 };
 
-order.showMtlSearch=function(event){
+order.showProductSearch=function(event){
 	
 	order.clickMtl=$(event.target).parents('tr');
-	order.queryMtl();
-	$('#mtlResult').empty();
-	$('#mtlModal').modal('show');
+//	order.queryMtl();
+//	$('#productResult').empty();
+	$('#productModal').modal('show');
 };
-order.mtlSearchOk=function(){
-	var checkedMtl=$('#mtlModal :radio:checked');
+order.productSearchOk=function(){
+	var checkedMtl=$('#productModal :radio:checked');
 	if(checkedMtl.length==0){
 		alert("请先选择一行数据");
 		return;
 	}
-	var mtl=$(checkedMtl[0]).attr("data-mtl");
-	if(typeof mtl =="string"){
-		mtl=JSON.parse(mtl);
+	var product=$(checkedMtl[0]).attr("data-product");
+	if(typeof product =="string"){
+		product=JSON.parse(product);
 	}
 	
 	var input=$(order.clickMtl[0]).find("input");
-	$(input[0]).val(mtl.code);
-	$(input[1]).val(mtl.unit);
-	$(input[2]).val(mtl.prePurPrice);
-	$('#mtlModal').modal('hide');
-	$('#mtlResult').empty();
+	$(input[0]).val(product.code);
+	$(input[1]).val(product.unit);
+	$(input[2]).val(product.prePurPrice);
+	$('#productModal').modal('hide');
+	$('#productResult').empty();
 	order.clickMtl=null;
 };
 
 order.queryMtl=function(){
 	$.ajax({
-		url:ctx+"/product/search",
+		url:ctx+"/jimi/product/search",
 		data:"",
 	success: function(result){
 		if(result.success==true){
-			var tbody=$('#mtlResult');
-			$.each(result.data,function(i,mtl){
+			var tbody=$('#productResult');
+			$.each(result.data,function(i,product){
 				var tr='<tr>';
-				tr+=('<td><input type="radio" name="selectRow" data-mtl=\''+JSON.stringify(mtl)+'\' ></td>');
-				tr+=('<td>'+mtl.id+'</td>');
-				tr+=('<td>'+mtl.product+'</td>');
-				tr+=('<td>'+mtl.price+'</td>');
+				tr+=('<td><input type="radio" name="selectRow" data-product=\''+JSON.stringify(product)+'\' ></td>');
+				tr+=('<td>'+product.id+'</td>');
+				tr+=('<td>'+product.product+'</td>');
+				tr+=('<td>'+product.price+'</td>');
 				tr+='</tr>';
 				
 				tbody.append($(tr));
@@ -289,5 +289,5 @@ $(document).ready(function() {
 	//init search button
 	$('#customerSearch').click(order.showCustomerSearch);
 	$('#customerSearchOk').click(order.customerSearchOk);
-	$('#mtlSearchOk').click(order.mtlSearchOk);
+	$('#productSearchOk').click(order.productSearchOk);
 });
