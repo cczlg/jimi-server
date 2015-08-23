@@ -17,7 +17,7 @@
 
         <!-- Breadcrumb -->
         <div class="bread-crumb pull-right">
-          <a href="${ctx}/"><i class="icon-home"></i> 首页</a> 
+          <a href="${ctx}/"><i class="glyphicon glyphicon-home"></i> 首页</a> 
           <!-- Divider -->
           <span class="divider">/</span> 
           <a href="#" class="bread-current">用户管理</a>
@@ -48,7 +48,7 @@
                   <div class="pull-left">用户</div>
                   <div class="widget-icons pull-right">
                   	<button class="btn"  onclick="window.location.href='${ctx}/admin/user/'">创建</button>
-                    <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
+                    <a href="#" class="wminimize"><i class="glyphicon glyphicon-chevron-up"></i></a> 
                   </div>  
                   <div class="clearfix"></div>
                 </div>

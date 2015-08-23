@@ -12,12 +12,12 @@
 	<!-- Page heading -->
 	<div class="page-head">
 		<h2 class="pull-left">
-			<i class="icon-table"></i> 产品管理
+			<i class="glyphicon glyphicon-th-list"></i> 产品管理
 		</h2>
 
 		<!-- Breadcrumb -->
 		<div class="bread-crumb pull-right">
-			<a href="${ctx}/tml"><i class="icon-home"></i> 首页</a>
+			<a href="${ctx}/tml"><i class="glyphicon glyphicon-home"></i> 首页</a>
 			<!-- Divider -->
 			<span class="divider">/</span> <a href="#" class="bread-current">产品管理</a>
 		</div>
@@ -48,7 +48,7 @@
 							<div class="widget-icons pull-right">
 								<button class="btn"
 									onclick="window.location.href='${ctx}/jimi/product/'">创建</button>
-								<a href="#" class="wminimize"><i class="icon-chevron-up"></i></a>
+								<a href="#" class="wminimize"><i class="glyphicon glyphicon-chevron-up"></i></a>
 							</div>
 							<div class="clearfix"></div>
 						</div>
@@ -94,7 +94,7 @@
 												<div class="btn-group1">
 													<button class="btn btn-xs btn-warning"
 														onclick="{location.href='${ctx}/jimi/product/update/${product.id}'}">
-														<i class="icon-pencil"></i>
+														<i class="glyphicon glyphicon-pencil"></i>
 													</button>
 													<c:if test="${product.status eq 'enabled' }">
 													<button class="btn btn-xs btn-danger" 

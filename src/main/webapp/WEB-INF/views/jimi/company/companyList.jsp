@@ -12,12 +12,12 @@
 	<!-- Page heading -->
 	<div class="page-head">
 		<h2 class="pull-left">
-			<i class="icon-table"></i> 公司管理
+			<i class="glyphicon glyphicon-th-list"></i> 公司管理
 		</h2>
 
 		<!-- Breadcrumb -->
 		<div class="bread-crumb pull-right">
-			<a href="${ctx}/tml"><i class="icon-home"></i> 首页</a>
+			<a href="${ctx}/tml"><i class="glyphicon glyphicon-home"></i> 首页</a>
 			<!-- Divider -->
 			<span class="divider">/</span> <a href="#" class="bread-current">公司管理</a>
 		</div>

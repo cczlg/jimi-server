@@ -24,7 +24,7 @@
 
 		<!-- Breadcrumb -->
 		<div class="bread-crumb pull-right">
-			<a href="${ctx}/"><i class="icon-home"></i> 首页</a>
+			<a href="${ctx}/"><i class="glyphicon glyphicon-home"></i> 首页</a>
 			<!-- Divider -->
 			<span class="divider">/</span> <a href="#" class="bread-current">订单管理</a>
 		</div>
@@ -51,8 +51,8 @@
 						<div class="widget-head">
 							<div class="pull-left">订单信息</div>
 							<div class="widget-icons pull-right">
-								<a href="#" class="wminimize"><i class="icon-chevron-up"></i></a>
-								<a href="#" class="wclose"><i class="icon-remove"></i></a>
+								<a href="#" class="wminimize"><i class="glyphicon glyphicon-chevron-up"></i></a>
+								<a href="#" class="wclose"><i class="glyphicon glyphicon-remove"></i></a>
 							</div>
 							<div class="clearfix"></div>
 						</div>
@@ -96,8 +96,8 @@
 											data-date-format="yyyy-mm-dd" data-link-field="orderTime"
 											data-link-format="yyyy-mm-dd" style="display: block">
 											<input size="16" type="text" value="" readonly> <span
-												class="add-on"><i class="icon-remove"></i></span> <span
-												class="add-on"><i class="icon-th"></i></span>
+												class="add-on"><i class="glyphicon glyphicon-remove"></i></span> <span
+												class="add-on"><i class="glyphicon glyphicon-th"></i></span>
 										</div>
 										<input type="hidden" id="orderTime" name="orderTime" value="" />
 									</div>
@@ -107,7 +107,7 @@
 											<input type="text" id="customer" name="customer"
 												class="form-control required" placeholder="客户">
 											<span class="add-on" id="customerSearch" >
-												<i class="icon-search"></i></span>
+												<i class="glyphicon glyphicon-search"></i></span>
 										</div>
 									</div>
 									<div class="form-group">
@@ -182,7 +182,7 @@
 			<div class="input-append">
 				<input id="productId_{0}" name="items[{0}].productId">
 				<input id="product_{0}" name="items[{0}].product">
-				<button class="btn" type="button" id="productSearchBtn_{0}"><i class="icon-search"></i></button>
+				<button class="btn" type="button" id="productSearchBtn_{0}"><i class="glyphicon glyphicon-search"></i></button>
 			</div>
 			</td>
 			<td>

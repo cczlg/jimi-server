@@ -87,7 +87,7 @@
 												<div class="btn-group1">
 													<button class="btn btn-xs btn-warning"
 														onclick="{location.href='${ctx}/jimi/employee/update/${employee.id}'}">
-														<i class="icon-pencil"></i>
+														<i class="glyphicon glyphicon-pencil"></i>
 													</button>
 													<c:if test="${employee.status eq 'enabled' }">
 													<button class="btn btn-xs btn-danger" 
