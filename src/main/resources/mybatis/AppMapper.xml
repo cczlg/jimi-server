@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- versionNamespace必须指向Dao接口 -->
+<mapper namespace="org.edmond.jimi.app.dao.AppDao">
+	<insert id="insert" parameterType="App" useGeneratedKeys="true"
+		keyProperty="id">
+		insert into jimi_app
+		(versionName,versionCode,releaseDate,fileName,creator,createDate)
+		values(#{versionName},#{versionCode},#{releaseDate},#{fileName},#{creator},#{createDate})
+	</insert>
+	<!-- 获取App-->
+	<select id="get" parameterType="int" resultType="App">
+		select id, 
+		versionName,versionCode,releaseDate,fileName,creator,createDate
+		from jimi_app
+		where id=#{id}
+	</select>
+
+	<!-- 查询用户,演示: 1.输入用map传入多个参数 2.<where>语句, 智能添加where和and关键字 3.输出直接映射对象 -->
+	<select id="search" parameterType="map" resultType="App">
+		select id,versionName,versionCode,releaseDate,fileName,creator,createDate
+		from jimi_app
+		<where>
+			<if test="versionName != null">
+				versionName=#{versionName}
+			</if>
+			<if test="versionCode != null">
+				versionCode=#{versionCode}
+			</if>
+			<if test="releaseDate != null">
+				releaseDate=#{releaseDate}
+			</if>
+			<if test="fileName != null">
+				fileName=#{fileName}
+			</if>
+			<if test="creator != null">
+				creator=#{creator}
+			</if>
+			<if test="createDate != null">
+				createDate=#{createDate}
+			</if>
+		</where>
+	</select>
+
+	<!-- 删除 -->
+	<delete id="delete" parameterType="int">
+		delete from jimi_app where id=#{id};
+	</delete>
+
+	<update id="update" parameterType="App">
+		update jimi_app set 
+				versionName=#{versionName},
+				versionCode=#{versionCode},
+				releaseDate=#{releaseDate},
+				fileName=#{fileName}
+		where id=#{id}
+	</update>
+
+	<select id="getAll" resultType="App">
+		select id,versionName,versionCode,releaseDate,fileName,creator,createDate
+		from jimi_app
+	</select>
+	
+	<!-- 获取App-->
+	<select id="getNewest" resultType="App">
+		select id, 
+		versionName,versionCode,releaseDate,fileName,creator,createDate
+		from jimi_app order by versionCode desc LIMIT 0,1;
+	</select>
+</mapper> 

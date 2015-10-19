@@ -34,6 +34,14 @@
 					<li><a href="${ctx}/admin/role/roles">角色管理</a></li>
 					<li><a href="${ctx}/admin/permission/permissions">权限管理</a></li>
 				</ul></li>
+				
+			<li class="has_sub"><a href="#"><i
+					class="glyphicon glyphicon-wrench"></i> 发布管理 <span
+					class="pull-right"><i
+						class="glyphicon glyphicon-chevron-right"></i></span></a>
+				<ul>
+					<li><a href="${ctx}/jimi/app/apps">应用管理</a></li>
+				</ul></li>
 
 			<li class="has_sub"><a href="#"><i
 					class="glyphicon glyphicon-wrench"></i> 公司管理 <span
@@ -43,7 +51,7 @@
 					<li><a href="${ctx}/jimi/company/companies">公司信息</a></li>
 					<li><a href="${ctx}/jimi/employee/employees">员工管理</a></li>
 				</ul></li>
-				
+
 			<li class="has_sub"><a href="#"><i
 					class="glyphicon glyphicon-wrench"></i> 销售管理 <span
 					class="pull-right"><i

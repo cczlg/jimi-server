@@ -140,3 +140,16 @@ CREATE TABLE `jimi`.`jimi_company` (
   `image` VARCHAR(255) NULL,
   `status` VARCHAR(20) NULL,
   PRIMARY KEY (`id`));
+
+
+CREATE TABLE `jimi_app` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `versionName` varchar(100) DEFAULT NULL,
+  `versionCode` bigint(20) DEFAULT NULL,
+  `releaseDate` datetime DEFAULT NULL,
+  `fileName` varchar(255) DEFAULT NULL,
+  `creator` varchar(45) DEFAULT NULL,
+  `createDate` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='发布版本历史表'
+

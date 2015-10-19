@@ -28,6 +28,7 @@
 				/resources/** = anon
 				/error/**=anon
 				/api/** = anon
+				/app/** = anon
 				/register/** = anon
 				/admin/** = roles[Admin]
 				/** = user
