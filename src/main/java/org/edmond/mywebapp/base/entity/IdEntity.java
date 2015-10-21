@@ -3,12 +3,16 @@ package org.edmond.mywebapp.base.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public abstract class IdEntity implements Serializable {
 
 	protected Long id;
 	protected String creator;
 	protected String updater;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	protected Date createDate;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	protected Date updateDate;
 
 	public Long getId() {

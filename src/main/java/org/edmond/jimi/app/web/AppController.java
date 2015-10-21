@@ -1,21 +1,18 @@
 package org.edmond.jimi.app.web;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
 
 import org.apache.shiro.SecurityUtils;
-import org.edmond.jimi.Constants;
-import org.edmond.jimi.app.service.AppService;
 import org.edmond.jimi.app.entity.App;
+import org.edmond.jimi.app.service.AppService;
 import org.edmond.mywebapp.system.service.ShiroDbRealm.ShiroUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -56,12 +53,14 @@ public class AppController {
 		
 		ShiroUser user = (ShiroUser) SecurityUtils.getSubject().getPrincipal();
 		app.setCreator(user.loginName);
-		app.setCreateDate(new Date(System.currentTimeMillis()));
-		app.setReleaseDate(app.getCreateDate());
 		appService.insert(app);
 		redirectAttributes.addFlashAttribute("message", "发布应用版本" + app.getVersionName() + "成功");
 		return "redirect:/jimi/app/apps";
 	}
 	
-	
+	@RequestMapping(value="download")
+	public String download(){
+		App app=appService.getNewest();
+		return "redirect:/app/"+app.getFileName();
+	}
 }

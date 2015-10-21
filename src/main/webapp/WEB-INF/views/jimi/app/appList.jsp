@@ -61,7 +61,6 @@
 										<th>#</th>
 										<th>版本名称</th>
 										<th>版本代码</th>
-										<th>发布日期</th>
 										<th>文件名</th>
 									</tr>
 								</thead>
@@ -71,7 +70,6 @@
 											<td>${idx.index+1}</td>
 											<td>${app.versionName}</td>
 											<td>${app.versionCode }</td>
-											<td>${app.releaseDate }</td>
 											<td>${app.fileName }</td>
 										</tr>
 									</c:forEach>

@@ -1,18 +1,27 @@
 package org.edmond.jimi.app.entity;
 
-import java.util.Date;
-
 import javax.xml.bind.annotation.XmlRootElement;
 
-import org.edmond.mywebapp.base.entity.IdEntity;
-
 @XmlRootElement(name = "App")
-public class App extends IdEntity {
+public class App{
+	private Long id;
+	private String creator;
 	private String versionName;
 	private Long  versionCode;
-	private Date releaseDate;
 	private String fileName;
-	
+
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getCreator() {
+		return creator;
+	}
+	public void setCreator(String creator) {
+		this.creator = creator;
+	}
 	public String getVersionName() {
 		return versionName;
 	}
@@ -24,12 +33,6 @@ public class App extends IdEntity {
 	}
 	public void setVersionCode(Long versionCode) {
 		this.versionCode = versionCode;
-	}
-	public Date getReleaseDate() {
-		return releaseDate;
-	}
-	public void setReleaseDate(Date releaseDate) {
-		this.releaseDate = releaseDate;
 	}
 	public String getFileName() {
 		return fileName;
