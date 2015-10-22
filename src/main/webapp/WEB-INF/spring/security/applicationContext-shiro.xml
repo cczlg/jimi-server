@@ -30,6 +30,7 @@
 				/api/** = anon
 				/app/** = anon
 				/register/** = anon
+				/jimi/app/download=anon
 				/admin/** = roles[Admin]
 				/** = user
 			</value>

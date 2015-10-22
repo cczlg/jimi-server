@@ -9,6 +9,10 @@
 <title>下载</title>
 </head>
 <body>
-<a href="${ctx}/jimi/app/download">点击下载</a>
+<a style="font-size:60px;" href="${ctx}/jimi/app/download">点击下载</a>
+
+<p style="font-size:40px;">
+	如果无法打开下载窗口，请点击微信公众号右上角菜单“在浏览器中打开”
+</p>
 </body>
 </html>
