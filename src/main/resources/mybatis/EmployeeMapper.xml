@@ -6,13 +6,13 @@
 	<insert id="insert" parameterType="Employee" useGeneratedKeys="true"
 		keyProperty="id">
 		insert into jimi_employee
-		(companyId,name,phone,phoneIMEI,status,creator,updater,createDate,updateDate)
-		values(#{companyId},#{name},#{phone},#{phoneIMEI},#{status},#{creator},#{updater},#{createDate},#{updateDate})
+		(companyId,name,phone,phoneIMEI,status,latitude,longitude,createDate)
+		values(#{companyId},#{name},#{phone},#{phoneIMEI},#{status},#{latitude},#{longitude},#{createDate})
 	</insert>
 	<!-- 获取用户 -->
 	<select id="get" parameterType="int" resultType="Employee">
 		select id,
-		companyId,name,phone,phoneIMEI,status,creator,updater,createDate,updateDate
+		companyId,name,phone,phoneIMEI,status,latitude,longitude
 		from jimi_employee
 		where id=#{id}
 	</select>
@@ -20,35 +20,29 @@
 	<!-- 查询用户,演示: 1.输入用map传入多个参数 2.<where>语句, 智能添加where和and关键字 3.输出直接映射对象 -->
 	<select id="search" parameterType="map" resultType="Employee">
 		select
-		id,companyId,name,phone,phoneIMEI,status,creator,updater,createDate,updateDate
+		id,companyId,name,phone,phoneIMEI,status,latitude,longitude
 		from jimi_employee
 		<where>
 			<if test="companyId != null">
-				companyId=#{companyId}
+				and companyId=#{companyId}
 			</if>
 			<if test="name != null">
-				name=#{name}
+				and name=#{name}
 			</if>
 			<if test="phone != null">
-				phone=#{phone}
+				and phone=#{phone}
 			</if>
 			<if test="phoneIMEI != null">
-				phoneIMEI=#{phoneIMEI}
+				and phoneIMEI=#{phoneIMEI}
 			</if>
 			<if test="status != null">
-				status=#{status}
+				and status=#{status}
 			</if>
-			<if test="creator != null">
-				creator=#{creator}
+			<if test="latitude != null">
+				and latitude=#{latitude}
 			</if>
-			<if test="updater != null">
-				updater=#{updater}
-			</if>
-			<if test="createDate != null">
-				createDate=#{createDate}
-			</if>
-			<if test="updateDate != null">
-				updateDate=#{updateDate}
+			<if test="longitude != null">
+				and longitude=#{longitude}
 			</if>
 		</where>
 	</select>
@@ -65,14 +59,14 @@
 		phone=#{phone},
 		phoneIMEI=#{phoneIMEI},
 		status=#{status},
-		updater=#{updater},
-		updateDate=#{updateDate}
+		latitude=#{latitude},
+		longitude=#{longitude}
 		where id=#{id}
 	</update>
 
 	<select id="getAll" resultType="Employee">
 		select
-		id,companyId,name,phone,phoneIMEI,status,creator,updater,createDate,updateDate
+		id,companyId,name,phone,phoneIMEI,status,latitude,longitude
 		from jimi_employee
 	</select>
 

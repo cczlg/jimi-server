@@ -17,6 +17,8 @@ public class Employee extends IdEntity {
 	private String phone;
 	private String phoneIMEI;
 	private String status;
+	private double latitude = 0.0;  
+    private double longitude = 0.0;  
 
 	public String getName() {
 		return name;
@@ -57,4 +59,28 @@ public class Employee extends IdEntity {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
+	@Override
+	public String toString() {
+		return "Employee [companyId=" + companyId + ", name=" + name + ", phone=" + phone + ", phoneIMEI=" + phoneIMEI
+				+ ", status=" + status + "]";
+	}
+
+	public double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+
+	public double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
+	
+	
 }

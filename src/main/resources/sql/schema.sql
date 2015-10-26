@@ -73,19 +73,25 @@ CREATE TABLE `jimi`.`jimi_company` (
   `status` VARCHAR(20) NULL ,
   `memo` VARCHAR(255) NULL,
   PRIMARY KEY (`id`));
+  
+alter table 'jimi'.'jimi_company' AUTO_INCREMENT=10000;
 
- CREATE TABLE `jimi`.`jimi_employee` (
-  `id` BIGINT NOT NULL AUTO_INCREMENT,
-  `companyId` BIGINT NOT NULL,
-  `name` VARCHAR(45) NULL,
-  `phone` VARCHAR(20) NOT NULL,
-  `phoneIMEI` VARCHAR(30) NULL,
-  `status` VARCHAR(20) NULL,
-  `creator` VARCHAR(45) NULL,
-  `updater` VARCHAR(45) NULL,
-  `createDate` DATETIME NULL,
-  `updateDate` DATETIME NULL,
-  PRIMARY KEY (`id`));
+
+CREATE TABLE `jimi_employee` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `companyId` bigint(20) NOT NULL,
+  `name` varchar(45) DEFAULT NULL,
+  `phone` varchar(20) NOT NULL,
+  `phoneIMEI` varchar(30) DEFAULT NULL,
+  `status` varchar(20) DEFAULT NULL,
+  `creator` varchar(45) DEFAULT NULL,
+  `updater` varchar(45) DEFAULT NULL,
+  `createDate` datetime DEFAULT NULL,
+  `updateDate` datetime DEFAULT NULL,
+  `latitude` double(20,17) DEFAULT '0.00000000000000000',
+  `longitude` double(20,17) DEFAULT '0.00000000000000000',
+  PRIMARY KEY (`id`)
+) ;
 
  CREATE TABLE `jimi`.`jimi_customer` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
