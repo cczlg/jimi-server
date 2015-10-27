@@ -19,6 +19,7 @@ public class Employee extends IdEntity {
 	private String status;
 	private double latitude = 0.0;  
     private double longitude = 0.0;  
+    private long loginCount=0;
 
 	public String getName() {
 		return name;
@@ -80,6 +81,14 @@ public class Employee extends IdEntity {
 
 	public void setLongitude(double longitude) {
 		this.longitude = longitude;
+	}
+
+	public long getLoginCount() {
+		return loginCount;
+	}
+
+	public void setLoginCount(long loginCount) {
+		this.loginCount = loginCount;
 	}
 	
 	

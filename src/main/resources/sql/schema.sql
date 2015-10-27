@@ -90,8 +90,12 @@ CREATE TABLE `jimi_employee` (
   `updateDate` datetime DEFAULT NULL,
   `latitude` double(20,17) DEFAULT '0.00000000000000000',
   `longitude` double(20,17) DEFAULT '0.00000000000000000',
+  `loginCount` BIGINT(20) NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ;
+
+--ALTER TABLE `jimi`.`jimi_employee` 
+--ADD COLUMN `loginCount` BIGINT(20) NULL DEFAULT 0 COMMENT '' AFTER `longitude`;
 
  CREATE TABLE `jimi`.`jimi_customer` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,

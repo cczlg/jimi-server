@@ -9,9 +9,16 @@
 <title>下载</title>
 </head>
 <body>
-<a style="font-size:60px;" href="${ctx}/jimi/app/download">点击下载</a>
+<a style="font-size:60px;" href="${ctx}/jimi/app/download">安卓版本点击下载或者扫描二维码</a>
+<p>
 
+<img alt="扫描下载" src="${ctx }/resources/img/jimi/download_android.png">
+</p>
+<p style="color:red;font-size:40px;">
+iOS版本暂不提供
+</p>
 <p style="font-size:40px;">
+	
 	如果无法打开下载窗口，请点击微信公众号右上角菜单“在浏览器中打开”
 </p>
 </body>

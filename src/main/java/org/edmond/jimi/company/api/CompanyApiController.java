@@ -33,8 +33,6 @@ public class CompanyApiController {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("companyId", emp.getCompanyId());
 		
-		if (StringUtils.isNotEmpty(emp.getPhone()))
-			paramMap.put("phone", emp.getPhone());
 		if (StringUtils.isNotEmpty(emp.getPhoneIMEI()))
 			paramMap.put("phoneIMEI", emp.getPhoneIMEI());
 		List<Employee> employees = employeeService.search(paramMap);
@@ -44,6 +42,8 @@ public class CompanyApiController {
 			logger.debug("Create an employee-->" + emp.toString());
 		} else {
 			emp.setId(employees.get(0).getId());
+			emp.setLoginCount(employees.get(0).getLoginCount()+1);
+			emp.setUpdateDate(new Date(System.currentTimeMillis()));
 			employeeService.update(emp);
 		}
 		return true;
