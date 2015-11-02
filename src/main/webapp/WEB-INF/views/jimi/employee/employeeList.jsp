@@ -63,6 +63,8 @@
 										<th>员工姓名</th>
 										<th>电话号码</th>
 										<th>手机串号</th>
+										<th>登录次数</th>
+										<th>最后登录时间</th>
 										<th>状态</th>
 										<th>管理</th>
 									</tr>
@@ -75,6 +77,8 @@
 											<td>${employee.name}</td>
 											<td>${employee.phone }</td>
 											<td>${employee.phoneIMEI }</td>
+											<td>${employee.loginCount }</td>
+											<td><fmt:formatDate value="${employee.createDate }" pattern="yyyy-MM-dd" /></td>
 											<td>
 												<c:if test="${employee.status eq 'enabled' }">
 												已启用
