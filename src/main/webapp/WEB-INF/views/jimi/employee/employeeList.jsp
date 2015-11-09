@@ -48,7 +48,8 @@
 							<div class="widget-icons pull-right">
 								<button class="btn"
 									onclick="window.location.href='${ctx}/jimi/employee/'">创建</button>
-								<a href="#" class="wminimize"><i class=glyphicon glyphicon-chevron-up></i></a>
+								<a href="#" class="wminimize"><i class=glyphicon
+									glyphicon-chevron-up></i></a>
 							</div>
 							<div class="clearfix"></div>
 						</div>
@@ -64,7 +65,9 @@
 										<th>电话号码</th>
 										<th>手机串号</th>
 										<th>登录次数</th>
+										<th>first login</th>
 										<th>最后登录时间</th>
+										<th>城市</th>
 										<th>状态</th>
 										<th>管理</th>
 									</tr>
@@ -78,15 +81,16 @@
 											<td>${employee.phone }</td>
 											<td>${employee.phoneIMEI }</td>
 											<td>${employee.loginCount }</td>
-											<td><fmt:formatDate value="${employee.createDate }" pattern="yyyy-MM-dd" /></td>
-											<td>
-												<c:if test="${employee.status eq 'enabled' }">
+											<td><fmt:formatDate value="${employee.createDate }"
+													pattern="yyyy-MM-dd HH:mm" /></td>
+											<td><fmt:formatDate value="${employee.updateDate }"
+													pattern="yyyy-MM-dd HH:mm" /></td>
+											<td>${employee.city }</td>
+											<td><c:if test="${employee.status eq 'enabled' }">
 												已启用
-												</c:if>
-												<c:if test="${employee.status eq 'disabled' }">
+												</c:if> <c:if test="${employee.status eq 'disabled' }">
 												已禁用
-												</c:if>
-											</td>
+												</c:if></td>
 											<td>
 												<div class="btn-group1">
 													<button class="btn btn-xs btn-warning"
@@ -94,16 +98,16 @@
 														<i class="glyphicon glyphicon-pencil"></i>
 													</button>
 													<c:if test="${employee.status eq 'enabled' }">
-													<button class="btn btn-xs btn-danger" 
-														onclick="{location.href='${ctx}/jimi/employee/changeStatus?id=${employee.id}&status=disabled'}">
-														<i class="glyphicon glyphicon-ban-circle"></i>
-													</button>
+														<button class="btn btn-xs btn-danger"
+															onclick="{location.href='${ctx}/jimi/employee/changeStatus?id=${employee.id}&status=disabled'}">
+															<i class="glyphicon glyphicon-ban-circle"></i>
+														</button>
 													</c:if>
 													<c:if test="${employee.status eq 'disabled' }">
-													<button class="btn btn-xs btn-success" 
-														onclick="{location.href='${ctx}/jimi/employee/changeStatus?id=${employee.id}&status=enabled'}">
-														<i class="glyphicon glyphicon-ok-circle"></i>
-													</button>
+														<button class="btn btn-xs btn-success"
+															onclick="{location.href='${ctx}/jimi/employee/changeStatus?id=${employee.id}&status=enabled'}">
+															<i class="glyphicon glyphicon-ok-circle"></i>
+														</button>
 													</c:if>
 												</div>
 											</td>

@@ -96,6 +96,9 @@ CREATE TABLE `jimi_employee` (
 
 --ALTER TABLE `jimi`.`jimi_employee` 
 --ADD COLUMN `loginCount` BIGINT(20) NULL DEFAULT 0 COMMENT '' AFTER `longitude`;
+ALTER TABLE `jimi`.`jimi_employee` 
+ADD COLUMN `city` VARCHAR(100) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NULL COMMENT '' AFTER `loginCount`;
+
 
  CREATE TABLE `jimi`.`jimi_customer` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,

@@ -20,6 +20,7 @@ public class Employee extends IdEntity {
 	private double latitude = 0.0;  
     private double longitude = 0.0;  
     private long loginCount=0;
+    private String city;
 
 	public String getName() {
 		return name;
@@ -89,6 +90,14 @@ public class Employee extends IdEntity {
 
 	public void setLoginCount(long loginCount) {
 		this.loginCount = loginCount;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
 	}
 	
 	
